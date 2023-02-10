@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.code4faster.dbssa.mbg.mapper.ApartmentRoomTypeMapper">
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentRoomType">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="room_type_name" jdbcType="VARCHAR" property="roomTypeName" />
+    <result column="room_resident_limit" jdbcType="INTEGER" property="roomResidentLimit" />
+    <result column="room_size" jdbcType="VARCHAR" property="roomSize" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_room_type
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRoomType">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_room_type (room_type_name, room_resident_limit, 
+      room_size)
+    values (#{roomTypeName,jdbcType=VARCHAR}, #{roomResidentLimit,jdbcType=INTEGER}, 
+      #{roomSize,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRoomType">
+    update apartment_room_type
+    set room_type_name = #{roomTypeName,jdbcType=VARCHAR},
+      room_resident_limit = #{roomResidentLimit,jdbcType=INTEGER},
+      room_size = #{roomSize,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, room_type_name, room_resident_limit, room_size
+    from apartment_room_type
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, room_type_name, room_resident_limit, room_size
+    from apartment_room_type
+  </select>
+</mapper>

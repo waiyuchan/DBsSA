@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.code4faster.dbssa.mbg.mapper.ApartmentWaterRecordMapper">
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentWaterRecord">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="water_meter_id" jdbcType="INTEGER" property="waterMeterId" />
+    <result column="last_reading" jdbcType="INTEGER" property="lastReading" />
+    <result column="latest_reading" jdbcType="INTEGER" property="latestReading" />
+    <result column="water_consumed" jdbcType="INTEGER" property="waterConsumed" />
+    <result column="water_fee" jdbcType="INTEGER" property="waterFee" />
+    <result column="record_time" jdbcType="INTEGER" property="recordTime" />
+    <result column="settlement_date" jdbcType="DATE" property="settlementDate" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_water_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentWaterRecord">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_water_record (water_meter_id, last_reading, latest_reading, 
+      water_consumed, water_fee, record_time, 
+      settlement_date)
+    values (#{waterMeterId,jdbcType=INTEGER}, #{lastReading,jdbcType=INTEGER}, #{latestReading,jdbcType=INTEGER}, 
+      #{waterConsumed,jdbcType=INTEGER}, #{waterFee,jdbcType=INTEGER}, #{recordTime,jdbcType=INTEGER}, 
+      #{settlementDate,jdbcType=DATE})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentWaterRecord">
+    update apartment_water_record
+    set water_meter_id = #{waterMeterId,jdbcType=INTEGER},
+      last_reading = #{lastReading,jdbcType=INTEGER},
+      latest_reading = #{latestReading,jdbcType=INTEGER},
+      water_consumed = #{waterConsumed,jdbcType=INTEGER},
+      water_fee = #{waterFee,jdbcType=INTEGER},
+      record_time = #{recordTime,jdbcType=INTEGER},
+      settlement_date = #{settlementDate,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, water_meter_id, last_reading, latest_reading, water_consumed, water_fee, 
+    record_time, settlement_date
+    from apartment_water_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, water_meter_id, last_reading, latest_reading, water_consumed, water_fee, 
+    record_time, settlement_date
+    from apartment_water_record
+  </select>
+</mapper>
