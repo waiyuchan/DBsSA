@@ -6,7 +6,7 @@
 ![](https://img.shields.io/badge/deploy-Docker-blue.svg)
 ![](https://img.shields.io/badge/license-Apache_2.0-green.svg)
 
-## DBsSA相关项目传送门
+## DBsSA 相关项目传送门 (Portal of DBsSA-related Projects)
 
 | 项目 (Project) | 编程语言 (Language) | 传送门 (Link) |
 | --- | --- | --- |
@@ -18,7 +18,7 @@
 | 影院终端桌面版 (Cinema Terminal Desktop Version) | C++ | [~~敬请期待 (Coming Soon)~~]() |
 | Mock服务 (Mock Service) | Python | [~~敬请期待 (Coming Soon)~~]() |
 
-## 功能规划
+## 功能规划 (Functional Planning)
 
 ### 🏢 企业运营端
 
