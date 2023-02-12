@@ -8,15 +8,15 @@
 
 ## DBsSA相关项目传送门
 
-| 项目内容 | 编程语言 | 传送门 |
+| 项目 (Project) | 编程语言 (Language) | 传送门 (Link) |
 | --- | --- | --- |
-| Web前端 | Vue.js + TypeScript | [~~敬请期待~~]() |
-| 移动端app (Android) | Kotlin | [~~敬请期待~~]() |
-| 区块链服务 | Golang | [~~敬请期待~~]() |
-| 推荐算法 | Java、Python、C++ | [~~敬请期待~~]() |
-| 即时通讯组件 | C++、Java、Python | [~~敬请期待~~]() |
-| 影院终端（桌面版） | C++ | [~~敬请期待~~]() |
-| Mock服务 | Python | [~~敬请期待~~]() |
+| Web前端 (Web frontend) | Vue.js + TypeScript | [~~敬请期待 (Coming Soon)~~]() |
+| 移动端Android App (Mobile Android App) | Kotlin | [~~敬请期待 (Coming Soon)~~]() |
+| 区块链服务 (Blockchain Service) | Golang | [~~敬请期待 (Coming Soon)~~]() |
+| 推荐算法 (Recommendation Algorithm) | Java、Python、C++ | [~~敬请期待 (Coming Soon)~~]() |
+| 即时通讯组件 (Instant Messaging Component) | C++、Java、Python | [~~敬请期待 (Coming Soon)~~]() |
+| 影院终端桌面版 (Cinema Terminal Desktop Version) | C++ | [~~敬请期待 (Coming Soon)~~]() |
+| Mock服务 (Mock Service) | Python | [~~敬请期待 (Coming Soon)~~]() |
 
 ## 功能规划
 
