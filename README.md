@@ -1,10 +1,28 @@
-# DBsSA: Digital British-style Student Apartments (数字化英式学生公寓)
+<font size="6"><strong>DBsSA: Digital British-style Student Apartments (数字化英式学生公寓)</strong></font>
 
 ![](https://img.shields.io/badge/language-Java-orange.svg)
 ![](https://img.shields.io/badge/backend_frame-Spring_Boot-6db33f.svg)
 ![](https://img.shields.io/badge/ORM-MyBatis-red.svg)
 ![](https://img.shields.io/badge/deploy-Docker-blue.svg)
 ![](https://img.shields.io/badge/license-Apache_2.0-green.svg)
+
+---
+
+<font size="5"><strong>目录<strong></font>
+
+- [DBsSA 项目介绍 (Project Introduction)](#dbssa-项目介绍-project-introduction)
+- [DBsSA 相关项目传送门 (Portal of DBsSA-related Projects)](#dbssa-相关项目传送门-portal-of-dbssa-related-projects)
+- [功能规划 (Functional Planning)](#功能规划-functional-planning)
+  - [🏢 企业运营端](#-企业运营端)
+  - [🏠 公寓运营端](#-公寓运营端)
+  - [👨🏻‍🎓 公寓住户端](#-公寓住户端)
+  - [🧑🏻‍💻 公寓预订系统](#-公寓预订系统)
+  - [🎬 公寓影院](#-公寓影院)
+  - [🏬 公寓二手交易平台](#-公寓二手交易平台)
+- [系统架构设计](#系统架构设计)
+- [接口设计](#接口设计)
+- [Mock的服务](#mock的服务)
+- [项目指引](#项目指引)
 
 ## DBsSA 项目介绍 (Project Introduction)
 
