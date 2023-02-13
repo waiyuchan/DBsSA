@@ -38,4 +38,41 @@
     select id, apartment_asset_id, apartment_room_id, create_time, status
     from apartment_asset_allocation_rel
   </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentAssetAllocationRel">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="apartment_asset_id" jdbcType="INTEGER" property="apartmentAssetId" />
+    <result column="apartment_room_id" jdbcType="INTEGER" property="apartmentRoomId" />
+    <result column="create_time" jdbcType="INTEGER" property="createTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_asset_allocation_rel
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentAssetAllocationRel">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_asset_allocation_rel (apartment_asset_id, apartment_room_id, 
+      create_time, status)
+    values (#{apartmentAssetId,jdbcType=INTEGER}, #{apartmentRoomId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=INTEGER}, #{status,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentAssetAllocationRel">
+    update apartment_asset_allocation_rel
+    set apartment_asset_id = #{apartmentAssetId,jdbcType=INTEGER},
+      apartment_room_id = #{apartmentRoomId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, apartment_asset_id, apartment_room_id, create_time, status
+    from apartment_asset_allocation_rel
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, apartment_asset_id, apartment_room_id, create_time, status
+    from apartment_asset_allocation_rel
+  </select>
 </mapper>

@@ -40,4 +40,43 @@
     select id, apartment_id, room_type_id, room_number, floor, status
     from apartment_room
   </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentRoom">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="apartment_id" jdbcType="INTEGER" property="apartmentId" />
+    <result column="room_type_id" jdbcType="INTEGER" property="roomTypeId" />
+    <result column="room_number" jdbcType="VARCHAR" property="roomNumber" />
+    <result column="floor" jdbcType="VARCHAR" property="floor" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_room
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRoom">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_room (apartment_id, room_type_id, room_number, 
+      floor, status)
+    values (#{apartmentId,jdbcType=INTEGER}, #{roomTypeId,jdbcType=INTEGER}, #{roomNumber,jdbcType=VARCHAR}, 
+      #{floor,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRoom">
+    update apartment_room
+    set apartment_id = #{apartmentId,jdbcType=INTEGER},
+      room_type_id = #{roomTypeId,jdbcType=INTEGER},
+      room_number = #{roomNumber,jdbcType=VARCHAR},
+      floor = #{floor,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, apartment_id, room_type_id, room_number, floor, status
+    from apartment_room
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, apartment_id, room_type_id, room_number, floor, status
+    from apartment_room
+  </select>
 </mapper>

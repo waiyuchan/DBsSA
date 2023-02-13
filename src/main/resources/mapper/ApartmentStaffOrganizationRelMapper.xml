@@ -38,4 +38,41 @@
     select id, apartment_staff_id, org_id, join_time, update_time
     from apartment_staff_organization_rel
   </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentStaffOrganizationRel">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="apartment_staff_id" jdbcType="INTEGER" property="apartmentStaffId" />
+    <result column="org_id" jdbcType="INTEGER" property="orgId" />
+    <result column="join_time" jdbcType="TIMESTAMP" property="joinTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_staff_organization_rel
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentStaffOrganizationRel">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_staff_organization_rel (apartment_staff_id, org_id, join_time, 
+      update_time)
+    values (#{apartmentStaffId,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, #{joinTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentStaffOrganizationRel">
+    update apartment_staff_organization_rel
+    set apartment_staff_id = #{apartmentStaffId,jdbcType=INTEGER},
+      org_id = #{orgId,jdbcType=INTEGER},
+      join_time = #{joinTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, apartment_staff_id, org_id, join_time, update_time
+    from apartment_staff_organization_rel
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, apartment_staff_id, org_id, join_time, update_time
+    from apartment_staff_organization_rel
+  </select>
 </mapper>

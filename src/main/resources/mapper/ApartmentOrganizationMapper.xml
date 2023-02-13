@@ -36,4 +36,39 @@
     select id, parent_id, apartment_id, name
     from apartment_organization
   </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentOrganization">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="apartment_id" jdbcType="INTEGER" property="apartmentId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_organization
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentOrganization">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_organization (parent_id, apartment_id, name
+      )
+    values (#{parentId,jdbcType=INTEGER}, #{apartmentId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentOrganization">
+    update apartment_organization
+    set parent_id = #{parentId,jdbcType=INTEGER},
+      apartment_id = #{apartmentId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, parent_id, apartment_id, name
+    from apartment_organization
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, parent_id, apartment_id, name
+    from apartment_organization
+  </select>
 </mapper>
