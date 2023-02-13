@@ -117,3 +117,11 @@
 
 * 物流系统（参考顺丰快递查询接入流程，https://open.sf-express.com/Api?category=1&apiClassify=1）
 * 支付系统（参考微信支付 & 支付宝接入流程）
+
+## 项目指引
+
+* 数据库表更新，需要使用MBG重新逆向工程，命令是
+
+```bash
+mvn mybatis-generator:generate
+```

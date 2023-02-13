@@ -139,4 +139,418 @@
     price, pay_by_installment, status, start_date, end_date, create_time, update_time
     from apartment_rental_order
   </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentRentalOrder">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="apartment_id" jdbcType="INTEGER" property="apartmentId" />
+    <result column="apartment_name" jdbcType="VARCHAR" property="apartmentName" />
+    <result column="apartment_room_id" jdbcType="INTEGER" property="apartmentRoomId" />
+    <result column="apartment_room_number" jdbcType="VARCHAR" property="apartmentRoomNumber" />
+    <result column="apartment_resident_id" jdbcType="INTEGER" property="apartmentResidentId" />
+    <result column="apartment_resident_username" jdbcType="VARCHAR" property="apartmentResidentUsername" />
+    <result column="apartment_resident_reservation_id" jdbcType="INTEGER" property="apartmentResidentReservationId" />
+    <result column="price" jdbcType="INTEGER" property="price" />
+    <result column="pay_by_installment" jdbcType="INTEGER" property="payByInstallment" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="start_date" jdbcType="DATE" property="startDate" />
+    <result column="end_date" jdbcType="DATE" property="endDate" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_rental_order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRentalOrder">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_rental_order (apartment_id, apartment_name, apartment_room_id, 
+      apartment_room_number, apartment_resident_id, 
+      apartment_resident_username, apartment_resident_reservation_id, 
+      price, pay_by_installment, status, 
+      start_date, end_date, create_time, 
+      update_time)
+    values (#{apartmentId,jdbcType=INTEGER}, #{apartmentName,jdbcType=VARCHAR}, #{apartmentRoomId,jdbcType=INTEGER}, 
+      #{apartmentRoomNumber,jdbcType=VARCHAR}, #{apartmentResidentId,jdbcType=INTEGER}, 
+      #{apartmentResidentUsername,jdbcType=VARCHAR}, #{apartmentResidentReservationId,jdbcType=INTEGER}, 
+      #{price,jdbcType=INTEGER}, #{payByInstallment,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{startDate,jdbcType=DATE}, #{endDate,jdbcType=DATE}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRentalOrder">
+    update apartment_rental_order
+    set apartment_id = #{apartmentId,jdbcType=INTEGER},
+      apartment_name = #{apartmentName,jdbcType=VARCHAR},
+      apartment_room_id = #{apartmentRoomId,jdbcType=INTEGER},
+      apartment_room_number = #{apartmentRoomNumber,jdbcType=VARCHAR},
+      apartment_resident_id = #{apartmentResidentId,jdbcType=INTEGER},
+      apartment_resident_username = #{apartmentResidentUsername,jdbcType=VARCHAR},
+      apartment_resident_reservation_id = #{apartmentResidentReservationId,jdbcType=INTEGER},
+      price = #{price,jdbcType=INTEGER},
+      pay_by_installment = #{payByInstallment,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      start_date = #{startDate,jdbcType=DATE},
+      end_date = #{endDate,jdbcType=DATE},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, apartment_id, apartment_name, apartment_room_id, apartment_room_number, 
+    apartment_resident_id, apartment_resident_username, apartment_resident_reservation_id, 
+    price, pay_by_installment, status, start_date, end_date, create_time, update_time
+    from apartment_rental_order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, apartment_id, apartment_name, apartment_room_id, apartment_room_number, 
+    apartment_resident_id, apartment_resident_username, apartment_resident_reservation_id, 
+    price, pay_by_installment, status, start_date, end_date, create_time, update_time
+    from apartment_rental_order
+  </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentRentalOrder">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="apartment_id" jdbcType="INTEGER" property="apartmentId" />
+    <result column="apartment_name" jdbcType="VARCHAR" property="apartmentName" />
+    <result column="apartment_room_id" jdbcType="INTEGER" property="apartmentRoomId" />
+    <result column="apartment_room_number" jdbcType="VARCHAR" property="apartmentRoomNumber" />
+    <result column="apartment_resident_id" jdbcType="INTEGER" property="apartmentResidentId" />
+    <result column="apartment_resident_username" jdbcType="VARCHAR" property="apartmentResidentUsername" />
+    <result column="apartment_resident_reservation_id" jdbcType="INTEGER" property="apartmentResidentReservationId" />
+    <result column="price" jdbcType="INTEGER" property="price" />
+    <result column="pay_by_installment" jdbcType="INTEGER" property="payByInstallment" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="start_date" jdbcType="DATE" property="startDate" />
+    <result column="end_date" jdbcType="DATE" property="endDate" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_rental_order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRentalOrder">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_rental_order (apartment_id, apartment_name, apartment_room_id, 
+      apartment_room_number, apartment_resident_id, 
+      apartment_resident_username, apartment_resident_reservation_id, 
+      price, pay_by_installment, status, 
+      start_date, end_date, create_time, 
+      update_time)
+    values (#{apartmentId,jdbcType=INTEGER}, #{apartmentName,jdbcType=VARCHAR}, #{apartmentRoomId,jdbcType=INTEGER}, 
+      #{apartmentRoomNumber,jdbcType=VARCHAR}, #{apartmentResidentId,jdbcType=INTEGER}, 
+      #{apartmentResidentUsername,jdbcType=VARCHAR}, #{apartmentResidentReservationId,jdbcType=INTEGER}, 
+      #{price,jdbcType=INTEGER}, #{payByInstallment,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{startDate,jdbcType=DATE}, #{endDate,jdbcType=DATE}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRentalOrder">
+    update apartment_rental_order
+    set apartment_id = #{apartmentId,jdbcType=INTEGER},
+      apartment_name = #{apartmentName,jdbcType=VARCHAR},
+      apartment_room_id = #{apartmentRoomId,jdbcType=INTEGER},
+      apartment_room_number = #{apartmentRoomNumber,jdbcType=VARCHAR},
+      apartment_resident_id = #{apartmentResidentId,jdbcType=INTEGER},
+      apartment_resident_username = #{apartmentResidentUsername,jdbcType=VARCHAR},
+      apartment_resident_reservation_id = #{apartmentResidentReservationId,jdbcType=INTEGER},
+      price = #{price,jdbcType=INTEGER},
+      pay_by_installment = #{payByInstallment,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      start_date = #{startDate,jdbcType=DATE},
+      end_date = #{endDate,jdbcType=DATE},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, apartment_id, apartment_name, apartment_room_id, apartment_room_number, 
+    apartment_resident_id, apartment_resident_username, apartment_resident_reservation_id, 
+    price, pay_by_installment, status, start_date, end_date, create_time, update_time
+    from apartment_rental_order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, apartment_id, apartment_name, apartment_room_id, apartment_room_number, 
+    apartment_resident_id, apartment_resident_username, apartment_resident_reservation_id, 
+    price, pay_by_installment, status, start_date, end_date, create_time, update_time
+    from apartment_rental_order
+  </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentRentalOrder">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="apartment_id" jdbcType="INTEGER" property="apartmentId" />
+    <result column="apartment_name" jdbcType="VARCHAR" property="apartmentName" />
+    <result column="apartment_room_id" jdbcType="INTEGER" property="apartmentRoomId" />
+    <result column="apartment_room_number" jdbcType="VARCHAR" property="apartmentRoomNumber" />
+    <result column="apartment_resident_id" jdbcType="INTEGER" property="apartmentResidentId" />
+    <result column="apartment_resident_username" jdbcType="VARCHAR" property="apartmentResidentUsername" />
+    <result column="apartment_resident_reservation_id" jdbcType="INTEGER" property="apartmentResidentReservationId" />
+    <result column="price" jdbcType="INTEGER" property="price" />
+    <result column="pay_by_installment" jdbcType="INTEGER" property="payByInstallment" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="start_date" jdbcType="DATE" property="startDate" />
+    <result column="end_date" jdbcType="DATE" property="endDate" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_rental_order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRentalOrder">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_rental_order (apartment_id, apartment_name, apartment_room_id, 
+      apartment_room_number, apartment_resident_id, 
+      apartment_resident_username, apartment_resident_reservation_id, 
+      price, pay_by_installment, status, 
+      start_date, end_date, create_time, 
+      update_time)
+    values (#{apartmentId,jdbcType=INTEGER}, #{apartmentName,jdbcType=VARCHAR}, #{apartmentRoomId,jdbcType=INTEGER}, 
+      #{apartmentRoomNumber,jdbcType=VARCHAR}, #{apartmentResidentId,jdbcType=INTEGER}, 
+      #{apartmentResidentUsername,jdbcType=VARCHAR}, #{apartmentResidentReservationId,jdbcType=INTEGER}, 
+      #{price,jdbcType=INTEGER}, #{payByInstallment,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{startDate,jdbcType=DATE}, #{endDate,jdbcType=DATE}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRentalOrder">
+    update apartment_rental_order
+    set apartment_id = #{apartmentId,jdbcType=INTEGER},
+      apartment_name = #{apartmentName,jdbcType=VARCHAR},
+      apartment_room_id = #{apartmentRoomId,jdbcType=INTEGER},
+      apartment_room_number = #{apartmentRoomNumber,jdbcType=VARCHAR},
+      apartment_resident_id = #{apartmentResidentId,jdbcType=INTEGER},
+      apartment_resident_username = #{apartmentResidentUsername,jdbcType=VARCHAR},
+      apartment_resident_reservation_id = #{apartmentResidentReservationId,jdbcType=INTEGER},
+      price = #{price,jdbcType=INTEGER},
+      pay_by_installment = #{payByInstallment,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      start_date = #{startDate,jdbcType=DATE},
+      end_date = #{endDate,jdbcType=DATE},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, apartment_id, apartment_name, apartment_room_id, apartment_room_number, 
+    apartment_resident_id, apartment_resident_username, apartment_resident_reservation_id, 
+    price, pay_by_installment, status, start_date, end_date, create_time, update_time
+    from apartment_rental_order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, apartment_id, apartment_name, apartment_room_id, apartment_room_number, 
+    apartment_resident_id, apartment_resident_username, apartment_resident_reservation_id, 
+    price, pay_by_installment, status, start_date, end_date, create_time, update_time
+    from apartment_rental_order
+  </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentRentalOrder">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="apartment_id" jdbcType="INTEGER" property="apartmentId" />
+    <result column="apartment_name" jdbcType="VARCHAR" property="apartmentName" />
+    <result column="apartment_room_id" jdbcType="INTEGER" property="apartmentRoomId" />
+    <result column="apartment_room_number" jdbcType="VARCHAR" property="apartmentRoomNumber" />
+    <result column="apartment_resident_id" jdbcType="INTEGER" property="apartmentResidentId" />
+    <result column="apartment_resident_username" jdbcType="VARCHAR" property="apartmentResidentUsername" />
+    <result column="apartment_resident_reservation_id" jdbcType="INTEGER" property="apartmentResidentReservationId" />
+    <result column="price" jdbcType="INTEGER" property="price" />
+    <result column="pay_by_installment" jdbcType="INTEGER" property="payByInstallment" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="start_date" jdbcType="DATE" property="startDate" />
+    <result column="end_date" jdbcType="DATE" property="endDate" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_rental_order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRentalOrder">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_rental_order (apartment_id, apartment_name, apartment_room_id, 
+      apartment_room_number, apartment_resident_id, 
+      apartment_resident_username, apartment_resident_reservation_id, 
+      price, pay_by_installment, status, 
+      start_date, end_date, create_time, 
+      update_time)
+    values (#{apartmentId,jdbcType=INTEGER}, #{apartmentName,jdbcType=VARCHAR}, #{apartmentRoomId,jdbcType=INTEGER}, 
+      #{apartmentRoomNumber,jdbcType=VARCHAR}, #{apartmentResidentId,jdbcType=INTEGER}, 
+      #{apartmentResidentUsername,jdbcType=VARCHAR}, #{apartmentResidentReservationId,jdbcType=INTEGER}, 
+      #{price,jdbcType=INTEGER}, #{payByInstallment,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{startDate,jdbcType=DATE}, #{endDate,jdbcType=DATE}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRentalOrder">
+    update apartment_rental_order
+    set apartment_id = #{apartmentId,jdbcType=INTEGER},
+      apartment_name = #{apartmentName,jdbcType=VARCHAR},
+      apartment_room_id = #{apartmentRoomId,jdbcType=INTEGER},
+      apartment_room_number = #{apartmentRoomNumber,jdbcType=VARCHAR},
+      apartment_resident_id = #{apartmentResidentId,jdbcType=INTEGER},
+      apartment_resident_username = #{apartmentResidentUsername,jdbcType=VARCHAR},
+      apartment_resident_reservation_id = #{apartmentResidentReservationId,jdbcType=INTEGER},
+      price = #{price,jdbcType=INTEGER},
+      pay_by_installment = #{payByInstallment,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      start_date = #{startDate,jdbcType=DATE},
+      end_date = #{endDate,jdbcType=DATE},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, apartment_id, apartment_name, apartment_room_id, apartment_room_number, 
+    apartment_resident_id, apartment_resident_username, apartment_resident_reservation_id, 
+    price, pay_by_installment, status, start_date, end_date, create_time, update_time
+    from apartment_rental_order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, apartment_id, apartment_name, apartment_room_id, apartment_room_number, 
+    apartment_resident_id, apartment_resident_username, apartment_resident_reservation_id, 
+    price, pay_by_installment, status, start_date, end_date, create_time, update_time
+    from apartment_rental_order
+  </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentRentalOrder">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="apartment_id" jdbcType="INTEGER" property="apartmentId" />
+    <result column="apartment_name" jdbcType="VARCHAR" property="apartmentName" />
+    <result column="apartment_room_id" jdbcType="INTEGER" property="apartmentRoomId" />
+    <result column="apartment_room_number" jdbcType="VARCHAR" property="apartmentRoomNumber" />
+    <result column="apartment_resident_id" jdbcType="INTEGER" property="apartmentResidentId" />
+    <result column="apartment_resident_username" jdbcType="VARCHAR" property="apartmentResidentUsername" />
+    <result column="apartment_resident_reservation_id" jdbcType="INTEGER" property="apartmentResidentReservationId" />
+    <result column="price" jdbcType="INTEGER" property="price" />
+    <result column="pay_by_installment" jdbcType="INTEGER" property="payByInstallment" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="start_date" jdbcType="DATE" property="startDate" />
+    <result column="end_date" jdbcType="DATE" property="endDate" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_rental_order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRentalOrder">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_rental_order (apartment_id, apartment_name, apartment_room_id, 
+      apartment_room_number, apartment_resident_id, 
+      apartment_resident_username, apartment_resident_reservation_id, 
+      price, pay_by_installment, status, 
+      start_date, end_date, create_time, 
+      update_time)
+    values (#{apartmentId,jdbcType=INTEGER}, #{apartmentName,jdbcType=VARCHAR}, #{apartmentRoomId,jdbcType=INTEGER}, 
+      #{apartmentRoomNumber,jdbcType=VARCHAR}, #{apartmentResidentId,jdbcType=INTEGER}, 
+      #{apartmentResidentUsername,jdbcType=VARCHAR}, #{apartmentResidentReservationId,jdbcType=INTEGER}, 
+      #{price,jdbcType=INTEGER}, #{payByInstallment,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{startDate,jdbcType=DATE}, #{endDate,jdbcType=DATE}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRentalOrder">
+    update apartment_rental_order
+    set apartment_id = #{apartmentId,jdbcType=INTEGER},
+      apartment_name = #{apartmentName,jdbcType=VARCHAR},
+      apartment_room_id = #{apartmentRoomId,jdbcType=INTEGER},
+      apartment_room_number = #{apartmentRoomNumber,jdbcType=VARCHAR},
+      apartment_resident_id = #{apartmentResidentId,jdbcType=INTEGER},
+      apartment_resident_username = #{apartmentResidentUsername,jdbcType=VARCHAR},
+      apartment_resident_reservation_id = #{apartmentResidentReservationId,jdbcType=INTEGER},
+      price = #{price,jdbcType=INTEGER},
+      pay_by_installment = #{payByInstallment,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      start_date = #{startDate,jdbcType=DATE},
+      end_date = #{endDate,jdbcType=DATE},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, apartment_id, apartment_name, apartment_room_id, apartment_room_number, 
+    apartment_resident_id, apartment_resident_username, apartment_resident_reservation_id, 
+    price, pay_by_installment, status, start_date, end_date, create_time, update_time
+    from apartment_rental_order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, apartment_id, apartment_name, apartment_room_id, apartment_room_number, 
+    apartment_resident_id, apartment_resident_username, apartment_resident_reservation_id, 
+    price, pay_by_installment, status, start_date, end_date, create_time, update_time
+    from apartment_rental_order
+  </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentRentalOrder">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="apartment_id" jdbcType="INTEGER" property="apartmentId" />
+    <result column="apartment_name" jdbcType="VARCHAR" property="apartmentName" />
+    <result column="apartment_room_id" jdbcType="INTEGER" property="apartmentRoomId" />
+    <result column="apartment_room_number" jdbcType="VARCHAR" property="apartmentRoomNumber" />
+    <result column="apartment_resident_id" jdbcType="INTEGER" property="apartmentResidentId" />
+    <result column="apartment_resident_username" jdbcType="VARCHAR" property="apartmentResidentUsername" />
+    <result column="apartment_resident_reservation_id" jdbcType="INTEGER" property="apartmentResidentReservationId" />
+    <result column="price" jdbcType="INTEGER" property="price" />
+    <result column="pay_by_installment" jdbcType="INTEGER" property="payByInstallment" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="start_date" jdbcType="DATE" property="startDate" />
+    <result column="end_date" jdbcType="DATE" property="endDate" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_rental_order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRentalOrder">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_rental_order (apartment_id, apartment_name, apartment_room_id, 
+      apartment_room_number, apartment_resident_id, 
+      apartment_resident_username, apartment_resident_reservation_id, 
+      price, pay_by_installment, status, 
+      start_date, end_date, create_time, 
+      update_time)
+    values (#{apartmentId,jdbcType=INTEGER}, #{apartmentName,jdbcType=VARCHAR}, #{apartmentRoomId,jdbcType=INTEGER}, 
+      #{apartmentRoomNumber,jdbcType=VARCHAR}, #{apartmentResidentId,jdbcType=INTEGER}, 
+      #{apartmentResidentUsername,jdbcType=VARCHAR}, #{apartmentResidentReservationId,jdbcType=INTEGER}, 
+      #{price,jdbcType=INTEGER}, #{payByInstallment,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{startDate,jdbcType=DATE}, #{endDate,jdbcType=DATE}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRentalOrder">
+    update apartment_rental_order
+    set apartment_id = #{apartmentId,jdbcType=INTEGER},
+      apartment_name = #{apartmentName,jdbcType=VARCHAR},
+      apartment_room_id = #{apartmentRoomId,jdbcType=INTEGER},
+      apartment_room_number = #{apartmentRoomNumber,jdbcType=VARCHAR},
+      apartment_resident_id = #{apartmentResidentId,jdbcType=INTEGER},
+      apartment_resident_username = #{apartmentResidentUsername,jdbcType=VARCHAR},
+      apartment_resident_reservation_id = #{apartmentResidentReservationId,jdbcType=INTEGER},
+      price = #{price,jdbcType=INTEGER},
+      pay_by_installment = #{payByInstallment,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      start_date = #{startDate,jdbcType=DATE},
+      end_date = #{endDate,jdbcType=DATE},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, apartment_id, apartment_name, apartment_room_id, apartment_room_number, 
+    apartment_resident_id, apartment_resident_username, apartment_resident_reservation_id, 
+    price, pay_by_installment, status, start_date, end_date, create_time, update_time
+    from apartment_rental_order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, apartment_id, apartment_name, apartment_room_id, apartment_room_number, 
+    apartment_resident_id, apartment_resident_username, apartment_resident_reservation_id, 
+    price, pay_by_installment, status, start_date, end_date, create_time, update_time
+    from apartment_rental_order
+  </select>
 </mapper>

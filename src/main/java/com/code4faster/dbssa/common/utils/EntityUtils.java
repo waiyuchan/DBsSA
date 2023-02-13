@@ -14,19 +14,43 @@ import java.util.Set;
 public class EntityUtils {
     // 实体模型工具类
 
+    // 转换Map为带数据的实体类，将键值对集合封装进实体对象属性中
     public <T> T convertMap2EntityClass(Map<String, Object> map, Class<T> tClass) {
-        // 转换Map为带数据的实体类，目的是为了将键值对封装进实体对象属性中
+        // 由于不确定返回值类型，故定义一个泛型类型 T，作为返回值
+        // 本方法有两个参数输入，Map集合 & 实体类，由于输入的实体类未知，故传递Class类作为参数类型，兼容所有的实体类
+
         try {
             // 拿到实体类的对象
             T t = tClass.newInstance();
-
             // 拆解map，给对象T的属性赋值
             Set<Map.Entry<String, Object>> entries = map.entrySet();
             for (Map.Entry<String, Object> entry : entries) {
                 Field field = tClass.getDeclaredField(entry.getKey());
                 // 设置修改权限，因为采用的封装private，不修改权限的话，不能修改实体类中的属性值
                 field.setAccessible(true);
-                field.set(t, entry.getValue());
+
+                // 感谢chatGPT给出的优化建议，
+                // 最开始直接使用了 `field.set(t, entry.getValue());`的处理方法
+                // 但这会导致map在转换为实体类时，无法解决类型转换冲突的问题
+                Object value = entry.getValue();
+                if (value.toString().length() != 0) {
+                    if (field.getType().equals(String.class)) {
+                        field.set(t, value.toString());
+                    } else if (field.getType().equals(Integer.class)) {
+                        field.set(t, Integer.parseInt(value.toString()));
+                    } else if (field.getType().equals(Double.class)) {
+                        field.set(t, Double.parseDouble(value.toString()));
+                    } else if (field.getType().equals(Date.class)) {
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                        try {
+                            field.set(t, sdf.parse(value.toString()));
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                } else {
+                    field.set(t, null);
+                }
             }
             return t;
         } catch (InstantiationException | IllegalAccessException | NoSuchFieldException e) {

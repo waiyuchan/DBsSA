@@ -71,4 +71,214 @@
     select id, apartment_asset_id, apartment_asset_tag_id, create_time
     from apartment_asset_tag_marked
   </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentAssetTagMarked">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="apartment_asset_id" jdbcType="INTEGER" property="apartmentAssetId" />
+    <result column="apartment_asset_tag_id" jdbcType="INTEGER" property="apartmentAssetTagId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_asset_tag_marked
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentAssetTagMarked">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_asset_tag_marked (apartment_asset_id, apartment_asset_tag_id, 
+      create_time)
+    values (#{apartmentAssetId,jdbcType=INTEGER}, #{apartmentAssetTagId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentAssetTagMarked">
+    update apartment_asset_tag_marked
+    set apartment_asset_id = #{apartmentAssetId,jdbcType=INTEGER},
+      apartment_asset_tag_id = #{apartmentAssetTagId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, apartment_asset_id, apartment_asset_tag_id, create_time
+    from apartment_asset_tag_marked
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, apartment_asset_id, apartment_asset_tag_id, create_time
+    from apartment_asset_tag_marked
+  </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentAssetTagMarked">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="apartment_asset_id" jdbcType="INTEGER" property="apartmentAssetId" />
+    <result column="apartment_asset_tag_id" jdbcType="INTEGER" property="apartmentAssetTagId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_asset_tag_marked
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentAssetTagMarked">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_asset_tag_marked (apartment_asset_id, apartment_asset_tag_id, 
+      create_time)
+    values (#{apartmentAssetId,jdbcType=INTEGER}, #{apartmentAssetTagId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentAssetTagMarked">
+    update apartment_asset_tag_marked
+    set apartment_asset_id = #{apartmentAssetId,jdbcType=INTEGER},
+      apartment_asset_tag_id = #{apartmentAssetTagId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, apartment_asset_id, apartment_asset_tag_id, create_time
+    from apartment_asset_tag_marked
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, apartment_asset_id, apartment_asset_tag_id, create_time
+    from apartment_asset_tag_marked
+  </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentAssetTagMarked">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="apartment_asset_id" jdbcType="INTEGER" property="apartmentAssetId" />
+    <result column="apartment_asset_tag_id" jdbcType="INTEGER" property="apartmentAssetTagId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_asset_tag_marked
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentAssetTagMarked">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_asset_tag_marked (apartment_asset_id, apartment_asset_tag_id, 
+      create_time)
+    values (#{apartmentAssetId,jdbcType=INTEGER}, #{apartmentAssetTagId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentAssetTagMarked">
+    update apartment_asset_tag_marked
+    set apartment_asset_id = #{apartmentAssetId,jdbcType=INTEGER},
+      apartment_asset_tag_id = #{apartmentAssetTagId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, apartment_asset_id, apartment_asset_tag_id, create_time
+    from apartment_asset_tag_marked
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, apartment_asset_id, apartment_asset_tag_id, create_time
+    from apartment_asset_tag_marked
+  </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentAssetTagMarked">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="apartment_asset_id" jdbcType="INTEGER" property="apartmentAssetId" />
+    <result column="apartment_asset_tag_id" jdbcType="INTEGER" property="apartmentAssetTagId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_asset_tag_marked
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentAssetTagMarked">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_asset_tag_marked (apartment_asset_id, apartment_asset_tag_id, 
+      create_time)
+    values (#{apartmentAssetId,jdbcType=INTEGER}, #{apartmentAssetTagId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentAssetTagMarked">
+    update apartment_asset_tag_marked
+    set apartment_asset_id = #{apartmentAssetId,jdbcType=INTEGER},
+      apartment_asset_tag_id = #{apartmentAssetTagId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, apartment_asset_id, apartment_asset_tag_id, create_time
+    from apartment_asset_tag_marked
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, apartment_asset_id, apartment_asset_tag_id, create_time
+    from apartment_asset_tag_marked
+  </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentAssetTagMarked">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="apartment_asset_id" jdbcType="INTEGER" property="apartmentAssetId" />
+    <result column="apartment_asset_tag_id" jdbcType="INTEGER" property="apartmentAssetTagId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_asset_tag_marked
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentAssetTagMarked">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_asset_tag_marked (apartment_asset_id, apartment_asset_tag_id, 
+      create_time)
+    values (#{apartmentAssetId,jdbcType=INTEGER}, #{apartmentAssetTagId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentAssetTagMarked">
+    update apartment_asset_tag_marked
+    set apartment_asset_id = #{apartmentAssetId,jdbcType=INTEGER},
+      apartment_asset_tag_id = #{apartmentAssetTagId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, apartment_asset_id, apartment_asset_tag_id, create_time
+    from apartment_asset_tag_marked
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, apartment_asset_id, apartment_asset_tag_id, create_time
+    from apartment_asset_tag_marked
+  </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentAssetTagMarked">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="apartment_asset_id" jdbcType="INTEGER" property="apartmentAssetId" />
+    <result column="apartment_asset_tag_id" jdbcType="INTEGER" property="apartmentAssetTagId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_asset_tag_marked
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentAssetTagMarked">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_asset_tag_marked (apartment_asset_id, apartment_asset_tag_id, 
+      create_time)
+    values (#{apartmentAssetId,jdbcType=INTEGER}, #{apartmentAssetTagId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentAssetTagMarked">
+    update apartment_asset_tag_marked
+    set apartment_asset_id = #{apartmentAssetId,jdbcType=INTEGER},
+      apartment_asset_tag_id = #{apartmentAssetTagId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, apartment_asset_id, apartment_asset_tag_id, create_time
+    from apartment_asset_tag_marked
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, apartment_asset_id, apartment_asset_tag_id, create_time
+    from apartment_asset_tag_marked
+  </select>
 </mapper>

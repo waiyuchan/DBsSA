@@ -28,8 +28,6 @@ public class MovieLib implements Serializable {
 
     private Integer duration;
 
-    private String introduction;
-
     private String doubanId;
 
     private String url;
@@ -37,6 +35,8 @@ public class MovieLib implements Serializable {
     private String pic;
 
     private Date createTime;
+
+    private String introduction;
 
     private static final long serialVersionUID = 1L;
 
@@ -136,14 +136,6 @@ public class MovieLib implements Serializable {
         this.duration = duration;
     }
 
-    public String getIntroduction() {
-        return introduction;
-    }
-
-    public void setIntroduction(String introduction) {
-        this.introduction = introduction == null ? null : introduction.trim();
-    }
-
     public String getDoubanId() {
         return doubanId;
     }
@@ -176,6 +168,14 @@ public class MovieLib implements Serializable {
         this.createTime = createTime;
     }
 
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction == null ? null : introduction.trim();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -194,11 +194,11 @@ public class MovieLib implements Serializable {
         sb.append(", language=").append(language);
         sb.append(", date=").append(date);
         sb.append(", duration=").append(duration);
-        sb.append(", introduction=").append(introduction);
         sb.append(", doubanId=").append(doubanId);
         sb.append(", url=").append(url);
         sb.append(", pic=").append(pic);
         sb.append(", createTime=").append(createTime);
+        sb.append(", introduction=").append(introduction);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

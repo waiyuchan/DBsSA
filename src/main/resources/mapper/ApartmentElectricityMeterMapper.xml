@@ -71,4 +71,214 @@
     select id, room_id, electricity_consumption, record_time
     from apartment_electricity_meter
   </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentElectricityMeter">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="room_id" jdbcType="INTEGER" property="roomId" />
+    <result column="electricity_consumption" jdbcType="INTEGER" property="electricityConsumption" />
+    <result column="record_time" jdbcType="TIMESTAMP" property="recordTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_electricity_meter
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentElectricityMeter">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_electricity_meter (room_id, electricity_consumption, record_time
+      )
+    values (#{roomId,jdbcType=INTEGER}, #{electricityConsumption,jdbcType=INTEGER}, #{recordTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentElectricityMeter">
+    update apartment_electricity_meter
+    set room_id = #{roomId,jdbcType=INTEGER},
+      electricity_consumption = #{electricityConsumption,jdbcType=INTEGER},
+      record_time = #{recordTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, room_id, electricity_consumption, record_time
+    from apartment_electricity_meter
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, room_id, electricity_consumption, record_time
+    from apartment_electricity_meter
+  </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentElectricityMeter">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="room_id" jdbcType="INTEGER" property="roomId" />
+    <result column="electricity_consumption" jdbcType="INTEGER" property="electricityConsumption" />
+    <result column="record_time" jdbcType="TIMESTAMP" property="recordTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_electricity_meter
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentElectricityMeter">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_electricity_meter (room_id, electricity_consumption, record_time
+      )
+    values (#{roomId,jdbcType=INTEGER}, #{electricityConsumption,jdbcType=INTEGER}, #{recordTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentElectricityMeter">
+    update apartment_electricity_meter
+    set room_id = #{roomId,jdbcType=INTEGER},
+      electricity_consumption = #{electricityConsumption,jdbcType=INTEGER},
+      record_time = #{recordTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, room_id, electricity_consumption, record_time
+    from apartment_electricity_meter
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, room_id, electricity_consumption, record_time
+    from apartment_electricity_meter
+  </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentElectricityMeter">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="room_id" jdbcType="INTEGER" property="roomId" />
+    <result column="electricity_consumption" jdbcType="INTEGER" property="electricityConsumption" />
+    <result column="record_time" jdbcType="TIMESTAMP" property="recordTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_electricity_meter
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentElectricityMeter">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_electricity_meter (room_id, electricity_consumption, record_time
+      )
+    values (#{roomId,jdbcType=INTEGER}, #{electricityConsumption,jdbcType=INTEGER}, #{recordTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentElectricityMeter">
+    update apartment_electricity_meter
+    set room_id = #{roomId,jdbcType=INTEGER},
+      electricity_consumption = #{electricityConsumption,jdbcType=INTEGER},
+      record_time = #{recordTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, room_id, electricity_consumption, record_time
+    from apartment_electricity_meter
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, room_id, electricity_consumption, record_time
+    from apartment_electricity_meter
+  </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentElectricityMeter">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="room_id" jdbcType="INTEGER" property="roomId" />
+    <result column="electricity_consumption" jdbcType="INTEGER" property="electricityConsumption" />
+    <result column="record_time" jdbcType="TIMESTAMP" property="recordTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_electricity_meter
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentElectricityMeter">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_electricity_meter (room_id, electricity_consumption, record_time
+      )
+    values (#{roomId,jdbcType=INTEGER}, #{electricityConsumption,jdbcType=INTEGER}, #{recordTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentElectricityMeter">
+    update apartment_electricity_meter
+    set room_id = #{roomId,jdbcType=INTEGER},
+      electricity_consumption = #{electricityConsumption,jdbcType=INTEGER},
+      record_time = #{recordTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, room_id, electricity_consumption, record_time
+    from apartment_electricity_meter
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, room_id, electricity_consumption, record_time
+    from apartment_electricity_meter
+  </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentElectricityMeter">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="room_id" jdbcType="INTEGER" property="roomId" />
+    <result column="electricity_consumption" jdbcType="INTEGER" property="electricityConsumption" />
+    <result column="record_time" jdbcType="TIMESTAMP" property="recordTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_electricity_meter
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentElectricityMeter">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_electricity_meter (room_id, electricity_consumption, record_time
+      )
+    values (#{roomId,jdbcType=INTEGER}, #{electricityConsumption,jdbcType=INTEGER}, #{recordTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentElectricityMeter">
+    update apartment_electricity_meter
+    set room_id = #{roomId,jdbcType=INTEGER},
+      electricity_consumption = #{electricityConsumption,jdbcType=INTEGER},
+      record_time = #{recordTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, room_id, electricity_consumption, record_time
+    from apartment_electricity_meter
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, room_id, electricity_consumption, record_time
+    from apartment_electricity_meter
+  </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentElectricityMeter">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="room_id" jdbcType="INTEGER" property="roomId" />
+    <result column="electricity_consumption" jdbcType="INTEGER" property="electricityConsumption" />
+    <result column="record_time" jdbcType="TIMESTAMP" property="recordTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_electricity_meter
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentElectricityMeter">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_electricity_meter (room_id, electricity_consumption, record_time
+      )
+    values (#{roomId,jdbcType=INTEGER}, #{electricityConsumption,jdbcType=INTEGER}, #{recordTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentElectricityMeter">
+    update apartment_electricity_meter
+    set room_id = #{roomId,jdbcType=INTEGER},
+      electricity_consumption = #{electricityConsumption,jdbcType=INTEGER},
+      record_time = #{recordTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, room_id, electricity_consumption, record_time
+    from apartment_electricity_meter
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, room_id, electricity_consumption, record_time
+    from apartment_electricity_meter
+  </select>
 </mapper>

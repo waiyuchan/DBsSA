@@ -99,4 +99,298 @@
     payment_date, status, create_time, update_time
     from apartment_rental_payment
   </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentRentalPayment">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="total_payment_period" jdbcType="INTEGER" property="totalPaymentPeriod" />
+    <result column="current_installment_period" jdbcType="INTEGER" property="currentInstallmentPeriod" />
+    <result column="current_installment_amount" jdbcType="INTEGER" property="currentInstallmentAmount" />
+    <result column="payment_date" jdbcType="DATE" property="paymentDate" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_rental_payment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRentalPayment">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_rental_payment (order_id, total_payment_period, current_installment_period, 
+      current_installment_amount, payment_date, status, 
+      create_time, update_time)
+    values (#{orderId,jdbcType=INTEGER}, #{totalPaymentPeriod,jdbcType=INTEGER}, #{currentInstallmentPeriod,jdbcType=INTEGER}, 
+      #{currentInstallmentAmount,jdbcType=INTEGER}, #{paymentDate,jdbcType=DATE}, #{status,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRentalPayment">
+    update apartment_rental_payment
+    set order_id = #{orderId,jdbcType=INTEGER},
+      total_payment_period = #{totalPaymentPeriod,jdbcType=INTEGER},
+      current_installment_period = #{currentInstallmentPeriod,jdbcType=INTEGER},
+      current_installment_amount = #{currentInstallmentAmount,jdbcType=INTEGER},
+      payment_date = #{paymentDate,jdbcType=DATE},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, order_id, total_payment_period, current_installment_period, current_installment_amount, 
+    payment_date, status, create_time, update_time
+    from apartment_rental_payment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, order_id, total_payment_period, current_installment_period, current_installment_amount, 
+    payment_date, status, create_time, update_time
+    from apartment_rental_payment
+  </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentRentalPayment">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="total_payment_period" jdbcType="INTEGER" property="totalPaymentPeriod" />
+    <result column="current_installment_period" jdbcType="INTEGER" property="currentInstallmentPeriod" />
+    <result column="current_installment_amount" jdbcType="INTEGER" property="currentInstallmentAmount" />
+    <result column="payment_date" jdbcType="DATE" property="paymentDate" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_rental_payment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRentalPayment">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_rental_payment (order_id, total_payment_period, current_installment_period, 
+      current_installment_amount, payment_date, status, 
+      create_time, update_time)
+    values (#{orderId,jdbcType=INTEGER}, #{totalPaymentPeriod,jdbcType=INTEGER}, #{currentInstallmentPeriod,jdbcType=INTEGER}, 
+      #{currentInstallmentAmount,jdbcType=INTEGER}, #{paymentDate,jdbcType=DATE}, #{status,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRentalPayment">
+    update apartment_rental_payment
+    set order_id = #{orderId,jdbcType=INTEGER},
+      total_payment_period = #{totalPaymentPeriod,jdbcType=INTEGER},
+      current_installment_period = #{currentInstallmentPeriod,jdbcType=INTEGER},
+      current_installment_amount = #{currentInstallmentAmount,jdbcType=INTEGER},
+      payment_date = #{paymentDate,jdbcType=DATE},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, order_id, total_payment_period, current_installment_period, current_installment_amount, 
+    payment_date, status, create_time, update_time
+    from apartment_rental_payment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, order_id, total_payment_period, current_installment_period, current_installment_amount, 
+    payment_date, status, create_time, update_time
+    from apartment_rental_payment
+  </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentRentalPayment">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="total_payment_period" jdbcType="INTEGER" property="totalPaymentPeriod" />
+    <result column="current_installment_period" jdbcType="INTEGER" property="currentInstallmentPeriod" />
+    <result column="current_installment_amount" jdbcType="INTEGER" property="currentInstallmentAmount" />
+    <result column="payment_date" jdbcType="DATE" property="paymentDate" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_rental_payment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRentalPayment">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_rental_payment (order_id, total_payment_period, current_installment_period, 
+      current_installment_amount, payment_date, status, 
+      create_time, update_time)
+    values (#{orderId,jdbcType=INTEGER}, #{totalPaymentPeriod,jdbcType=INTEGER}, #{currentInstallmentPeriod,jdbcType=INTEGER}, 
+      #{currentInstallmentAmount,jdbcType=INTEGER}, #{paymentDate,jdbcType=DATE}, #{status,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRentalPayment">
+    update apartment_rental_payment
+    set order_id = #{orderId,jdbcType=INTEGER},
+      total_payment_period = #{totalPaymentPeriod,jdbcType=INTEGER},
+      current_installment_period = #{currentInstallmentPeriod,jdbcType=INTEGER},
+      current_installment_amount = #{currentInstallmentAmount,jdbcType=INTEGER},
+      payment_date = #{paymentDate,jdbcType=DATE},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, order_id, total_payment_period, current_installment_period, current_installment_amount, 
+    payment_date, status, create_time, update_time
+    from apartment_rental_payment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, order_id, total_payment_period, current_installment_period, current_installment_amount, 
+    payment_date, status, create_time, update_time
+    from apartment_rental_payment
+  </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentRentalPayment">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="total_payment_period" jdbcType="INTEGER" property="totalPaymentPeriod" />
+    <result column="current_installment_period" jdbcType="INTEGER" property="currentInstallmentPeriod" />
+    <result column="current_installment_amount" jdbcType="INTEGER" property="currentInstallmentAmount" />
+    <result column="payment_date" jdbcType="DATE" property="paymentDate" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_rental_payment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRentalPayment">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_rental_payment (order_id, total_payment_period, current_installment_period, 
+      current_installment_amount, payment_date, status, 
+      create_time, update_time)
+    values (#{orderId,jdbcType=INTEGER}, #{totalPaymentPeriod,jdbcType=INTEGER}, #{currentInstallmentPeriod,jdbcType=INTEGER}, 
+      #{currentInstallmentAmount,jdbcType=INTEGER}, #{paymentDate,jdbcType=DATE}, #{status,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRentalPayment">
+    update apartment_rental_payment
+    set order_id = #{orderId,jdbcType=INTEGER},
+      total_payment_period = #{totalPaymentPeriod,jdbcType=INTEGER},
+      current_installment_period = #{currentInstallmentPeriod,jdbcType=INTEGER},
+      current_installment_amount = #{currentInstallmentAmount,jdbcType=INTEGER},
+      payment_date = #{paymentDate,jdbcType=DATE},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, order_id, total_payment_period, current_installment_period, current_installment_amount, 
+    payment_date, status, create_time, update_time
+    from apartment_rental_payment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, order_id, total_payment_period, current_installment_period, current_installment_amount, 
+    payment_date, status, create_time, update_time
+    from apartment_rental_payment
+  </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentRentalPayment">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="total_payment_period" jdbcType="INTEGER" property="totalPaymentPeriod" />
+    <result column="current_installment_period" jdbcType="INTEGER" property="currentInstallmentPeriod" />
+    <result column="current_installment_amount" jdbcType="INTEGER" property="currentInstallmentAmount" />
+    <result column="payment_date" jdbcType="DATE" property="paymentDate" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_rental_payment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRentalPayment">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_rental_payment (order_id, total_payment_period, current_installment_period, 
+      current_installment_amount, payment_date, status, 
+      create_time, update_time)
+    values (#{orderId,jdbcType=INTEGER}, #{totalPaymentPeriod,jdbcType=INTEGER}, #{currentInstallmentPeriod,jdbcType=INTEGER}, 
+      #{currentInstallmentAmount,jdbcType=INTEGER}, #{paymentDate,jdbcType=DATE}, #{status,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRentalPayment">
+    update apartment_rental_payment
+    set order_id = #{orderId,jdbcType=INTEGER},
+      total_payment_period = #{totalPaymentPeriod,jdbcType=INTEGER},
+      current_installment_period = #{currentInstallmentPeriod,jdbcType=INTEGER},
+      current_installment_amount = #{currentInstallmentAmount,jdbcType=INTEGER},
+      payment_date = #{paymentDate,jdbcType=DATE},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, order_id, total_payment_period, current_installment_period, current_installment_amount, 
+    payment_date, status, create_time, update_time
+    from apartment_rental_payment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, order_id, total_payment_period, current_installment_period, current_installment_amount, 
+    payment_date, status, create_time, update_time
+    from apartment_rental_payment
+  </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentRentalPayment">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="total_payment_period" jdbcType="INTEGER" property="totalPaymentPeriod" />
+    <result column="current_installment_period" jdbcType="INTEGER" property="currentInstallmentPeriod" />
+    <result column="current_installment_amount" jdbcType="INTEGER" property="currentInstallmentAmount" />
+    <result column="payment_date" jdbcType="DATE" property="paymentDate" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_rental_payment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRentalPayment">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_rental_payment (order_id, total_payment_period, current_installment_period, 
+      current_installment_amount, payment_date, status, 
+      create_time, update_time)
+    values (#{orderId,jdbcType=INTEGER}, #{totalPaymentPeriod,jdbcType=INTEGER}, #{currentInstallmentPeriod,jdbcType=INTEGER}, 
+      #{currentInstallmentAmount,jdbcType=INTEGER}, #{paymentDate,jdbcType=DATE}, #{status,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRentalPayment">
+    update apartment_rental_payment
+    set order_id = #{orderId,jdbcType=INTEGER},
+      total_payment_period = #{totalPaymentPeriod,jdbcType=INTEGER},
+      current_installment_period = #{currentInstallmentPeriod,jdbcType=INTEGER},
+      current_installment_amount = #{currentInstallmentAmount,jdbcType=INTEGER},
+      payment_date = #{paymentDate,jdbcType=DATE},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, order_id, total_payment_period, current_installment_period, current_installment_amount, 
+    payment_date, status, create_time, update_time
+    from apartment_rental_payment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, order_id, total_payment_period, current_installment_period, current_installment_amount, 
+    payment_date, status, create_time, update_time
+    from apartment_rental_payment
+  </select>
 </mapper>

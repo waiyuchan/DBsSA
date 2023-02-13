@@ -14,6 +14,432 @@
     <result column="language" jdbcType="VARCHAR" property="language" />
     <result column="date" jdbcType="VARCHAR" property="date" />
     <result column="duration" jdbcType="INTEGER" property="duration" />
+    <result column="douban_id" jdbcType="VARCHAR" property="doubanId" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="pic" jdbcType="VARCHAR" property="pic" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="introduction" jdbcType="LONGVARCHAR" property="introduction" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from movie_lib
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.MovieLib">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into movie_lib (name, english_name, directors, 
+      writer, actors, rate, 
+      style, country, language, 
+      date, duration, douban_id, 
+      url, pic, create_time, 
+      introduction)
+    values (#{name,jdbcType=VARCHAR}, #{englishName,jdbcType=VARCHAR}, #{directors,jdbcType=VARCHAR}, 
+      #{writer,jdbcType=VARCHAR}, #{actors,jdbcType=VARCHAR}, #{rate,jdbcType=VARCHAR}, 
+      #{style,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{language,jdbcType=VARCHAR}, 
+      #{date,jdbcType=VARCHAR}, #{duration,jdbcType=INTEGER}, #{doubanId,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{introduction,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.MovieLib">
+    update movie_lib
+    set name = #{name,jdbcType=VARCHAR},
+      english_name = #{englishName,jdbcType=VARCHAR},
+      directors = #{directors,jdbcType=VARCHAR},
+      writer = #{writer,jdbcType=VARCHAR},
+      actors = #{actors,jdbcType=VARCHAR},
+      rate = #{rate,jdbcType=VARCHAR},
+      style = #{style,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      language = #{language,jdbcType=VARCHAR},
+      date = #{date,jdbcType=VARCHAR},
+      duration = #{duration,jdbcType=INTEGER},
+      douban_id = #{doubanId,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      introduction = #{introduction,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, name, english_name, directors, writer, actors, rate, style, country, language, 
+    date, duration, douban_id, url, pic, create_time, introduction
+    from movie_lib
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, english_name, directors, writer, actors, rate, style, country, language, 
+    date, duration, douban_id, url, pic, create_time, introduction
+    from movie_lib
+  </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.MovieLib">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="english_name" jdbcType="VARCHAR" property="englishName" />
+    <result column="directors" jdbcType="VARCHAR" property="directors" />
+    <result column="writer" jdbcType="VARCHAR" property="writer" />
+    <result column="actors" jdbcType="VARCHAR" property="actors" />
+    <result column="rate" jdbcType="VARCHAR" property="rate" />
+    <result column="style" jdbcType="VARCHAR" property="style" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="language" jdbcType="VARCHAR" property="language" />
+    <result column="date" jdbcType="VARCHAR" property="date" />
+    <result column="duration" jdbcType="INTEGER" property="duration" />
+    <result column="douban_id" jdbcType="VARCHAR" property="doubanId" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="pic" jdbcType="VARCHAR" property="pic" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="introduction" jdbcType="LONGVARCHAR" property="introduction" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from movie_lib
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.MovieLib">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into movie_lib (name, english_name, directors, 
+      writer, actors, rate, 
+      style, country, language, 
+      date, duration, douban_id, 
+      url, pic, create_time, 
+      introduction)
+    values (#{name,jdbcType=VARCHAR}, #{englishName,jdbcType=VARCHAR}, #{directors,jdbcType=VARCHAR}, 
+      #{writer,jdbcType=VARCHAR}, #{actors,jdbcType=VARCHAR}, #{rate,jdbcType=VARCHAR}, 
+      #{style,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{language,jdbcType=VARCHAR}, 
+      #{date,jdbcType=VARCHAR}, #{duration,jdbcType=INTEGER}, #{doubanId,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{introduction,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.MovieLib">
+    update movie_lib
+    set name = #{name,jdbcType=VARCHAR},
+      english_name = #{englishName,jdbcType=VARCHAR},
+      directors = #{directors,jdbcType=VARCHAR},
+      writer = #{writer,jdbcType=VARCHAR},
+      actors = #{actors,jdbcType=VARCHAR},
+      rate = #{rate,jdbcType=VARCHAR},
+      style = #{style,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      language = #{language,jdbcType=VARCHAR},
+      date = #{date,jdbcType=VARCHAR},
+      duration = #{duration,jdbcType=INTEGER},
+      douban_id = #{doubanId,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      introduction = #{introduction,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, name, english_name, directors, writer, actors, rate, style, country, language, 
+    date, duration, douban_id, url, pic, create_time, introduction
+    from movie_lib
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, english_name, directors, writer, actors, rate, style, country, language, 
+    date, duration, douban_id, url, pic, create_time, introduction
+    from movie_lib
+  </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.MovieLib">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="english_name" jdbcType="VARCHAR" property="englishName" />
+    <result column="directors" jdbcType="VARCHAR" property="directors" />
+    <result column="writer" jdbcType="VARCHAR" property="writer" />
+    <result column="actors" jdbcType="VARCHAR" property="actors" />
+    <result column="rate" jdbcType="VARCHAR" property="rate" />
+    <result column="style" jdbcType="VARCHAR" property="style" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="language" jdbcType="VARCHAR" property="language" />
+    <result column="date" jdbcType="VARCHAR" property="date" />
+    <result column="duration" jdbcType="INTEGER" property="duration" />
+    <result column="douban_id" jdbcType="VARCHAR" property="doubanId" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="pic" jdbcType="VARCHAR" property="pic" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="introduction" jdbcType="LONGVARCHAR" property="introduction" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from movie_lib
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.MovieLib">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into movie_lib (name, english_name, directors, 
+      writer, actors, rate, 
+      style, country, language, 
+      date, duration, douban_id, 
+      url, pic, create_time, 
+      introduction)
+    values (#{name,jdbcType=VARCHAR}, #{englishName,jdbcType=VARCHAR}, #{directors,jdbcType=VARCHAR}, 
+      #{writer,jdbcType=VARCHAR}, #{actors,jdbcType=VARCHAR}, #{rate,jdbcType=VARCHAR}, 
+      #{style,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{language,jdbcType=VARCHAR}, 
+      #{date,jdbcType=VARCHAR}, #{duration,jdbcType=INTEGER}, #{doubanId,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{introduction,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.MovieLib">
+    update movie_lib
+    set name = #{name,jdbcType=VARCHAR},
+      english_name = #{englishName,jdbcType=VARCHAR},
+      directors = #{directors,jdbcType=VARCHAR},
+      writer = #{writer,jdbcType=VARCHAR},
+      actors = #{actors,jdbcType=VARCHAR},
+      rate = #{rate,jdbcType=VARCHAR},
+      style = #{style,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      language = #{language,jdbcType=VARCHAR},
+      date = #{date,jdbcType=VARCHAR},
+      duration = #{duration,jdbcType=INTEGER},
+      douban_id = #{doubanId,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      introduction = #{introduction,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, name, english_name, directors, writer, actors, rate, style, country, language, 
+    date, duration, douban_id, url, pic, create_time, introduction
+    from movie_lib
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, english_name, directors, writer, actors, rate, style, country, language, 
+    date, duration, douban_id, url, pic, create_time, introduction
+    from movie_lib
+  </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.MovieLib">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="english_name" jdbcType="VARCHAR" property="englishName" />
+    <result column="directors" jdbcType="VARCHAR" property="directors" />
+    <result column="writer" jdbcType="VARCHAR" property="writer" />
+    <result column="actors" jdbcType="VARCHAR" property="actors" />
+    <result column="rate" jdbcType="VARCHAR" property="rate" />
+    <result column="style" jdbcType="VARCHAR" property="style" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="language" jdbcType="VARCHAR" property="language" />
+    <result column="date" jdbcType="VARCHAR" property="date" />
+    <result column="duration" jdbcType="INTEGER" property="duration" />
+    <result column="douban_id" jdbcType="VARCHAR" property="doubanId" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="pic" jdbcType="VARCHAR" property="pic" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="introduction" jdbcType="LONGVARCHAR" property="introduction" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from movie_lib
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.MovieLib">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into movie_lib (name, english_name, directors, 
+      writer, actors, rate, 
+      style, country, language, 
+      date, duration, douban_id, 
+      url, pic, create_time, 
+      introduction)
+    values (#{name,jdbcType=VARCHAR}, #{englishName,jdbcType=VARCHAR}, #{directors,jdbcType=VARCHAR}, 
+      #{writer,jdbcType=VARCHAR}, #{actors,jdbcType=VARCHAR}, #{rate,jdbcType=VARCHAR}, 
+      #{style,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{language,jdbcType=VARCHAR}, 
+      #{date,jdbcType=VARCHAR}, #{duration,jdbcType=INTEGER}, #{doubanId,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{introduction,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.MovieLib">
+    update movie_lib
+    set name = #{name,jdbcType=VARCHAR},
+      english_name = #{englishName,jdbcType=VARCHAR},
+      directors = #{directors,jdbcType=VARCHAR},
+      writer = #{writer,jdbcType=VARCHAR},
+      actors = #{actors,jdbcType=VARCHAR},
+      rate = #{rate,jdbcType=VARCHAR},
+      style = #{style,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      language = #{language,jdbcType=VARCHAR},
+      date = #{date,jdbcType=VARCHAR},
+      duration = #{duration,jdbcType=INTEGER},
+      douban_id = #{doubanId,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      introduction = #{introduction,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, name, english_name, directors, writer, actors, rate, style, country, language, 
+    date, duration, douban_id, url, pic, create_time, introduction
+    from movie_lib
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, english_name, directors, writer, actors, rate, style, country, language, 
+    date, duration, douban_id, url, pic, create_time, introduction
+    from movie_lib
+  </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.MovieLib">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="english_name" jdbcType="VARCHAR" property="englishName" />
+    <result column="directors" jdbcType="VARCHAR" property="directors" />
+    <result column="writer" jdbcType="VARCHAR" property="writer" />
+    <result column="actors" jdbcType="VARCHAR" property="actors" />
+    <result column="rate" jdbcType="VARCHAR" property="rate" />
+    <result column="style" jdbcType="VARCHAR" property="style" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="language" jdbcType="VARCHAR" property="language" />
+    <result column="date" jdbcType="VARCHAR" property="date" />
+    <result column="duration" jdbcType="INTEGER" property="duration" />
+    <result column="douban_id" jdbcType="VARCHAR" property="doubanId" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="pic" jdbcType="VARCHAR" property="pic" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="introduction" jdbcType="LONGVARCHAR" property="introduction" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from movie_lib
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.MovieLib">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into movie_lib (name, english_name, directors, 
+      writer, actors, rate, 
+      style, country, language, 
+      date, duration, douban_id, 
+      url, pic, create_time, 
+      introduction)
+    values (#{name,jdbcType=VARCHAR}, #{englishName,jdbcType=VARCHAR}, #{directors,jdbcType=VARCHAR}, 
+      #{writer,jdbcType=VARCHAR}, #{actors,jdbcType=VARCHAR}, #{rate,jdbcType=VARCHAR}, 
+      #{style,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{language,jdbcType=VARCHAR}, 
+      #{date,jdbcType=VARCHAR}, #{duration,jdbcType=INTEGER}, #{doubanId,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{introduction,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.MovieLib">
+    update movie_lib
+    set name = #{name,jdbcType=VARCHAR},
+      english_name = #{englishName,jdbcType=VARCHAR},
+      directors = #{directors,jdbcType=VARCHAR},
+      writer = #{writer,jdbcType=VARCHAR},
+      actors = #{actors,jdbcType=VARCHAR},
+      rate = #{rate,jdbcType=VARCHAR},
+      style = #{style,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      language = #{language,jdbcType=VARCHAR},
+      date = #{date,jdbcType=VARCHAR},
+      duration = #{duration,jdbcType=INTEGER},
+      douban_id = #{doubanId,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      introduction = #{introduction,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, name, english_name, directors, writer, actors, rate, style, country, language, 
+    date, duration, douban_id, url, pic, create_time, introduction
+    from movie_lib
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, english_name, directors, writer, actors, rate, style, country, language, 
+    date, duration, douban_id, url, pic, create_time, introduction
+    from movie_lib
+  </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.MovieLib">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="english_name" jdbcType="VARCHAR" property="englishName" />
+    <result column="directors" jdbcType="VARCHAR" property="directors" />
+    <result column="writer" jdbcType="VARCHAR" property="writer" />
+    <result column="actors" jdbcType="VARCHAR" property="actors" />
+    <result column="rate" jdbcType="VARCHAR" property="rate" />
+    <result column="style" jdbcType="VARCHAR" property="style" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="language" jdbcType="VARCHAR" property="language" />
+    <result column="date" jdbcType="VARCHAR" property="date" />
+    <result column="duration" jdbcType="INTEGER" property="duration" />
+    <result column="douban_id" jdbcType="VARCHAR" property="doubanId" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="pic" jdbcType="VARCHAR" property="pic" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="introduction" jdbcType="LONGVARCHAR" property="introduction" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from movie_lib
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.MovieLib">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into movie_lib (name, english_name, directors, 
+      writer, actors, rate, 
+      style, country, language, 
+      date, duration, douban_id, 
+      url, pic, create_time, 
+      introduction)
+    values (#{name,jdbcType=VARCHAR}, #{englishName,jdbcType=VARCHAR}, #{directors,jdbcType=VARCHAR}, 
+      #{writer,jdbcType=VARCHAR}, #{actors,jdbcType=VARCHAR}, #{rate,jdbcType=VARCHAR}, 
+      #{style,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{language,jdbcType=VARCHAR}, 
+      #{date,jdbcType=VARCHAR}, #{duration,jdbcType=INTEGER}, #{doubanId,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{introduction,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.MovieLib">
+    update movie_lib
+    set name = #{name,jdbcType=VARCHAR},
+      english_name = #{englishName,jdbcType=VARCHAR},
+      directors = #{directors,jdbcType=VARCHAR},
+      writer = #{writer,jdbcType=VARCHAR},
+      actors = #{actors,jdbcType=VARCHAR},
+      rate = #{rate,jdbcType=VARCHAR},
+      style = #{style,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      language = #{language,jdbcType=VARCHAR},
+      date = #{date,jdbcType=VARCHAR},
+      duration = #{duration,jdbcType=INTEGER},
+      douban_id = #{doubanId,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      introduction = #{introduction,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, name, english_name, directors, writer, actors, rate, style, country, language, 
+    date, duration, douban_id, url, pic, create_time, introduction
+    from movie_lib
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, english_name, directors, writer, actors, rate, style, country, language, 
+    date, duration, douban_id, url, pic, create_time, introduction
+    from movie_lib
+  </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.MovieLib">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="english_name" jdbcType="VARCHAR" property="englishName" />
+    <result column="directors" jdbcType="VARCHAR" property="directors" />
+    <result column="writer" jdbcType="VARCHAR" property="writer" />
+    <result column="actors" jdbcType="VARCHAR" property="actors" />
+    <result column="rate" jdbcType="VARCHAR" property="rate" />
+    <result column="style" jdbcType="VARCHAR" property="style" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="language" jdbcType="VARCHAR" property="language" />
+    <result column="date" jdbcType="VARCHAR" property="date" />
+    <result column="duration" jdbcType="INTEGER" property="duration" />
     <result column="introduction" jdbcType="VARCHAR" property="introduction" />
     <result column="douban_id" jdbcType="VARCHAR" property="doubanId" />
     <result column="url" jdbcType="VARCHAR" property="url" />
