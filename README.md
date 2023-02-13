@@ -6,9 +6,9 @@
 ![](https://img.shields.io/badge/deploy-Docker-blue.svg)
 ![](https://img.shields.io/badge/license-Apache_2.0-green.svg)
 
-## DBsSA 项目介绍
+## DBsSA 项目介绍 (Project Introduction)
 
-该项目旨在
+该项目旨在将
 
 ## DBsSA 相关项目传送门 (Portal of DBsSA-related Projects)
 
@@ -111,7 +111,7 @@
 
 敬请期待
 
-[接口文档](document/api/README.md)
+[接口文档](docs/api/README.md)
 
 ## Mock的服务
 
