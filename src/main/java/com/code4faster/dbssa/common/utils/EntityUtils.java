@@ -29,7 +29,7 @@ public class EntityUtils {
                 // 设置修改权限，因为采用的封装private，不修改权限的话，不能修改实体类中的属性值
                 field.setAccessible(true);
 
-                // 感谢chatGPT给出的优化建议，
+                // 感谢chatGPT给出的优化建议
                 // 最开始直接使用了 `field.set(t, entry.getValue());`的处理方法
                 // 但这会导致map在转换为实体类时，无法解决类型转换冲突的问题
                 Object value = entry.getValue();

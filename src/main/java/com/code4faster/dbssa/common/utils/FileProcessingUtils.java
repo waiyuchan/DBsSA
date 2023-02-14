@@ -116,11 +116,7 @@ public class FileProcessingUtils {
                 stmt.setString(9, movieLib.getCountry());
                 stmt.setString(10, movieLib.getLanguage());
                 stmt.setString(11, movieLib.getDate());
-                if (movieLib.getDuration() != null) {
-                    stmt.setInt(12, movieLib.getDuration());
-                } else {
-                    stmt.setNull(12, Types.INTEGER);
-                }
+                stmt.setInt(12, (movieLib.getDuration() != null) ? movieLib.getDuration() : Types.INTEGER);
                 stmt.setString(13, movieLib.getIntroduction());
                 stmt.setString(14, movieLib.getDoubanId());
                 stmt.setString(15, movieLib.getUrl());
