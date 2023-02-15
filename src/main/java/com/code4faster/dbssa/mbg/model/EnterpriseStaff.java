@@ -18,7 +18,7 @@ public class EnterpriseStaff implements Serializable {
 
     private String address;
 
-    private Date hiredDate;
+    private Date entryDate;
 
     private Integer status;
 
@@ -84,12 +84,12 @@ public class EnterpriseStaff implements Serializable {
         this.address = address == null ? null : address.trim();
     }
 
-    public Date getHiredDate() {
-        return hiredDate;
+    public Date getEntryDate() {
+        return entryDate;
     }
 
-    public void setHiredDate(Date hiredDate) {
-        this.hiredDate = hiredDate;
+    public void setEntryDate(Date entryDate) {
+        this.entryDate = entryDate;
     }
 
     public Integer getStatus() {
@@ -129,7 +129,7 @@ public class EnterpriseStaff implements Serializable {
         sb.append(", email=").append(email);
         sb.append(", phone=").append(phone);
         sb.append(", address=").append(address);
-        sb.append(", hiredDate=").append(hiredDate);
+        sb.append(", entryDate=").append(entryDate);
         sb.append(", status=").append(status);
         sb.append(", resignationDate=").append(resignationDate);
         sb.append(", createTime=").append(createTime);

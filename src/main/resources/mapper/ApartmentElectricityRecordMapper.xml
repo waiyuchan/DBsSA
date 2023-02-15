@@ -377,4 +377,51 @@
     electricity_fee, record_time, settlement_date
     from apartment_electricity_record
   </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentElectricityRecord">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="electricity_meter_id" jdbcType="INTEGER" property="electricityMeterId" />
+    <result column="last_reading" jdbcType="INTEGER" property="lastReading" />
+    <result column="latest_reading" jdbcType="INTEGER" property="latestReading" />
+    <result column="electricity_consumed" jdbcType="INTEGER" property="electricityConsumed" />
+    <result column="electricity_fee" jdbcType="INTEGER" property="electricityFee" />
+    <result column="record_time" jdbcType="INTEGER" property="recordTime" />
+    <result column="settlement_date" jdbcType="DATE" property="settlementDate" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from apartment_electricity_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.ApartmentElectricityRecord">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into apartment_electricity_record (electricity_meter_id, last_reading, 
+      latest_reading, electricity_consumed, electricity_fee, 
+      record_time, settlement_date)
+    values (#{electricityMeterId,jdbcType=INTEGER}, #{lastReading,jdbcType=INTEGER}, 
+      #{latestReading,jdbcType=INTEGER}, #{electricityConsumed,jdbcType=INTEGER}, #{electricityFee,jdbcType=INTEGER}, 
+      #{recordTime,jdbcType=INTEGER}, #{settlementDate,jdbcType=DATE})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.ApartmentElectricityRecord">
+    update apartment_electricity_record
+    set electricity_meter_id = #{electricityMeterId,jdbcType=INTEGER},
+      last_reading = #{lastReading,jdbcType=INTEGER},
+      latest_reading = #{latestReading,jdbcType=INTEGER},
+      electricity_consumed = #{electricityConsumed,jdbcType=INTEGER},
+      electricity_fee = #{electricityFee,jdbcType=INTEGER},
+      record_time = #{recordTime,jdbcType=INTEGER},
+      settlement_date = #{settlementDate,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, electricity_meter_id, last_reading, latest_reading, electricity_consumed, 
+    electricity_fee, record_time, settlement_date
+    from apartment_electricity_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, electricity_meter_id, last_reading, latest_reading, electricity_consumed, 
+    electricity_fee, record_time, settlement_date
+    from apartment_electricity_record
+  </select>
 </mapper>

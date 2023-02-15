@@ -9,6 +9,61 @@
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="entry_date" jdbcType="DATE" property="entryDate" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="resignation_date" jdbcType="DATE" property="resignationDate" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from enterprise_staff
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.code4faster.dbssa.mbg.model.EnterpriseStaff">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into enterprise_staff (username, password, name, 
+      email, phone, address, 
+      entry_date, status, resignation_date, 
+      create_time)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{entryDate,jdbcType=DATE}, #{status,jdbcType=INTEGER}, #{resignationDate,jdbcType=DATE}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.EnterpriseStaff">
+    update enterprise_staff
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      entry_date = #{entryDate,jdbcType=DATE},
+      status = #{status,jdbcType=INTEGER},
+      resignation_date = #{resignationDate,jdbcType=DATE},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, username, password, name, email, phone, address, entry_date, status, resignation_date, 
+    create_time
+    from enterprise_staff
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, username, password, name, email, phone, address, entry_date, status, resignation_date, 
+    create_time
+    from enterprise_staff
+  </select>
+  <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.EnterpriseStaff">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="hired_date" jdbcType="DATE" property="hiredDate" />
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="resignation_date" jdbcType="DATE" property="resignationDate" />

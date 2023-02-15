@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class ApartmentController {
 
-    @Autowired
-    ApartmentService apartmentService;
 
     @RequestMapping(method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public String createApartment(@RequestBody Apartment apartment) {

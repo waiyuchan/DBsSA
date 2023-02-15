@@ -6,3 +6,4 @@ spring:
     url: jdbc:mysql://localhost:3306/dbssa
     username: root
     password: Test@1234
+
