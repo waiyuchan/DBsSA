@@ -14,7 +14,14 @@ import java.util.Set;
 public class EntityUtils {
     // 实体模型工具类
 
-    // 转换Map为带数据的实体类，将键值对集合封装进实体对象属性中
+    /**
+     * 转换Map为带数据的实体类，将键值对集合封装进实体对象属性中
+     *
+     * @param map    Map对象
+     * @param tClass 实体类的Class属性
+     * @param <T>    定义的泛型类型，用来代表未知的实体类
+     * @return 由键值对对象转化成的实体类
+     */
     public <T> T convertMap2EntityClass(Map<String, Object> map, Class<T> tClass) {
         // 由于不确定返回值类型，故定义一个泛型类型 T，作为返回值
         // 本方法有两个参数输入，Map集合 & 实体类，由于输入的实体类未知，故传递Class类作为参数类型，兼容所有的实体类
@@ -30,7 +37,7 @@ public class EntityUtils {
                 field.setAccessible(true);
 
                 // 感谢chatGPT给出的优化建议
-                // 最开始直接使用了 `field.set(t, entry.getValue());`的处理方法
+                // 最开始直接使用了 `field.set(t, entry.getValue());` 的处理方法
                 // 但这会导致map在转换为实体类时，无法解决类型转换冲突的问题
                 Object value = entry.getValue();
                 if (value.toString().length() != 0) {

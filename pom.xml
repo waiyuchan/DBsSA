@@ -51,16 +51,6 @@
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>1.3.2</version>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>org.mybatis</groupId>-->
-        <!--            <artifactId>mybatis-spring</artifactId>-->
-        <!--            <version>2.0.7</version>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>com.baomidou</groupId>-->
-        <!--            <artifactId>mybatis-plus-boot-starter</artifactId>-->
-        <!--            <version>3.4.0</version>-->
-        <!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -75,6 +65,11 @@
             <groupId>com.alibaba.fastjson2</groupId>
             <artifactId>fastjson2</artifactId>
             <version>2.0.23</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

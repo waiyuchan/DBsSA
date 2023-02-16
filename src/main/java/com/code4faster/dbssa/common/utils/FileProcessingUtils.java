@@ -12,6 +12,12 @@ import java.util.stream.Collectors;
 
 public class FileProcessingUtils {
 
+    /**
+     * CSV文件读取方法
+     *
+     * @param csvFilePath csv文件路径
+     * @return 解析后的缓冲字符输入流
+     */
     public BufferedReader csvFileReader(String csvFilePath) {
         BufferedReader bufferedReader = null;
         try {
@@ -22,6 +28,12 @@ public class FileProcessingUtils {
         return bufferedReader;
     }
 
+    /**
+     * 将电影CSV文件的数据转换为ArrayList格式数据
+     *
+     * @param bufferedReader 解析后的缓冲字符输入流
+     * @return 带键值对对象的List接口，用ArrayList实现，存储电影数据
+     */
     public List<Map<String, Object>> convertMovieCsvData2ArrayList(BufferedReader bufferedReader) {
         List<Map<String, Object>> maps = new ArrayList<>();
         String line = "";
@@ -89,7 +101,13 @@ public class FileProcessingUtils {
         return maps;
     }
 
-    public List<MovieLib> convertMovieArrayListModelList(List<Map<String, Object>> maps) {
+    /**
+     * 转换电影数据的ArrayList格式数据为实体类列表数据
+     *
+     * @param maps 带键值对对象的List接口，包含了实体类必备数据的map对象
+     * @return 电影实体类列表数据
+     */
+    public List<MovieLib> convertMovieArrayList2ModelList(List<Map<String, Object>> maps) {
         List<MovieLib> movieLibs = new ArrayList<>();
         EntityUtils entityUtils = new EntityUtils();
         for (Map<String, Object> map : maps) {
@@ -99,6 +117,12 @@ public class FileProcessingUtils {
         return movieLibs;
     }
 
+    /**
+     * 将ArrayList格式数据批量插入数据库
+     *
+     * @param movieLibs 电影实体类列表数据
+     * @return 成功与否的 true or false
+     */
     public boolean insertMovieArrayList2MySQL(List<MovieLib> movieLibs) {
         String sql = "INSERT INTO `dbssa`.`movie_lib`(`id`, `name`, `english_name`, `directors`, `writer`, `actors`, `rate`, `style`, `country`, `language`, `date`, `duration`, `introduction`, `douban_id`, `url`, `pic`, `create_time`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP);";
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbssa", "root", "root");
@@ -138,7 +162,7 @@ public class FileProcessingUtils {
         FileProcessingUtils fileProcessingUtils = new FileProcessingUtils();
         BufferedReader bufferedReader = fileProcessingUtils.csvFileReader(movieFilepath);
         List<Map<String, Object>> movieHashMaps = fileProcessingUtils.convertMovieCsvData2ArrayList(bufferedReader);
-        List<MovieLib> movieLibs = fileProcessingUtils.convertMovieArrayListModelList(movieHashMaps);
+        List<MovieLib> movieLibs = fileProcessingUtils.convertMovieArrayList2ModelList(movieHashMaps);
         boolean isInserted = fileProcessingUtils.insertMovieArrayList2MySQL(movieLibs);
         System.out.println(isInserted);
     }

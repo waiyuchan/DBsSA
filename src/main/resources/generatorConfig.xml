@@ -45,6 +45,9 @@
         <!-- 为生成的Java模型创建一个toString方法 -->
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
 
+        <!--覆盖生成XML文件-->
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"/>
+
         <commentGenerator>
             <!-- 生成的注释是否包含生成的时间，一般设置为true，不生成时间 -->
             <property name="suppressDate" value="true"/>

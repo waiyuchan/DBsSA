@@ -12,12 +12,12 @@ public interface EnterpriseStaffService {
     //
     // List<EnterpriseStaffDto> queryEnterpriseStaffList(Integer offset, Integer limit);
 
-    Integer countAll();
+    // Integer countAll();
 
     boolean createEnterpriseStaff(EnterpriseStaffRegistration enterpriseStaffRegistration);
 
-    boolean updateEnterpriseStaff(EnterpriseStaff enterpriseStaffDto);
+    // boolean updateEnterpriseStaff(EnterpriseStaff enterpriseStaffDto);
 
-    boolean deleteEnterpriseStaff(Integer id);
+    // boolean deleteEnterpriseStaff(Integer id);
 
 }

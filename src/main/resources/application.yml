@@ -6,4 +6,5 @@ spring:
     url: jdbc:mysql://localhost:3306/dbssa
     username: root
     password: Test@1234
-
+mybatis:
+  mapper-locations: classpath:mapper/*.xml

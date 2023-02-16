@@ -9,10 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @Service
 public class EnterpriseStaffServiceImpl implements EnterpriseStaffService {
+
+    protected Integer DEFAULT_INITIAL_VALUE = 0;
 
     @Resource
     EnterpriseStaffMapper enterpriseStaffMapper;
@@ -29,33 +32,38 @@ public class EnterpriseStaffServiceImpl implements EnterpriseStaffService {
     //     return null;
     // }
 
-    @Override
-    public Integer countAll() {
-        return null;
-    }
+    // @Override
+    // public Integer countAll() {
+    //     return null;
+    // }
+
 
     @Override
     public boolean createEnterpriseStaff(EnterpriseStaffRegistration enterpriseStaffRegistration) {
         EnterpriseStaff enterpriseStaff = ModelClassUtils.copyValueOfSameProperties(enterpriseStaffRegistration, EnterpriseStaff.class);
-        System.out.println(enterpriseStaff);
+        String email = enterpriseStaff.getUsername() + "@code4faster.com";
+        enterpriseStaff.setId(DEFAULT_INITIAL_VALUE);
+        enterpriseStaff.setStatus(DEFAULT_INITIAL_VALUE);
+        enterpriseStaff.setEmail(email);
+        enterpriseStaff.setCreateTime(new java.sql.Date(new java.util.Date().getTime()));
         int row = enterpriseStaffMapper.insert(enterpriseStaff);
         return row > 0;
     }
 
-    @Override
-    public boolean updateEnterpriseStaff(EnterpriseStaff enterpriseStaffDto) {
-        EnterpriseStaff enterpriseStaff = new EnterpriseStaff();
-        // TODO: 需要添加一个将 EnterpriseStaff 转换为 EnterpriseStaffDto 的通用方法
-        // int rows = enterpriseStaffMapper.updateByPrimaryKey(enterpriseStaff);
-        // return rows > 0;
-        return false;
-    }
+    // @Override
+    // public boolean updateEnterpriseStaff(EnterpriseStaff enterpriseStaffDto) {
+    //     EnterpriseStaff enterpriseStaff = new EnterpriseStaff();
+    //     // TODO: 需要添加一个将 EnterpriseStaff 转换为 EnterpriseStaffDto 的通用方法
+    //     // int rows = enterpriseStaffMapper.updateByPrimaryKey(enterpriseStaff);
+    //     // return rows > 0;
+    //     return false;
+    // }
 
 
-    @Override
-    public boolean deleteEnterpriseStaff(Integer id) {
-        // int rows = enterpriseStaffMapper.deleteByPrimaryKey(id);
-        // return rows > 0;
-        return false;
-    }
+    // @Override
+    // public boolean deleteEnterpriseStaff(Integer id) {
+    //     // int rows = enterpriseStaffMapper.deleteByPrimaryKey(id);
+    //     // return rows > 0;
+    //     return false;
+    // }
 }
