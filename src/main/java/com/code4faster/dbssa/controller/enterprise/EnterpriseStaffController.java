@@ -1,17 +1,12 @@
 package com.code4faster.dbssa.controller.enterprise;
 
-import com.code4faster.dbssa.mbg.model.EnterpriseStaff;
+import com.code4faster.dbssa.common.api.ApiResponse;
 // import com.code4faster.dbssa.pojo.dto.EnterpriseStaffDto;
 import com.code4faster.dbssa.pojo.dto.EnterpriseStaffRegistration;
 import com.code4faster.dbssa.service.EnterpriseStaffService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.Resource;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/enterprise_staff")
@@ -21,14 +16,18 @@ public class EnterpriseStaffController {
     EnterpriseStaffService enterpriseStaffService;
 
     @PostMapping
-    public ResponseEntity<String> createEnterpriseStaff(@RequestBody EnterpriseStaffRegistration enterpriseStaffRegistration) {
-        boolean success = enterpriseStaffService.createEnterpriseStaff(enterpriseStaffRegistration);
+    public ApiResponse createEnterpriseStaff(@RequestBody EnterpriseStaffRegistration enterpriseStaffRegistration) {
         // TODO: 首先需要保证创造用户的唯一性，即确认用户名是否已存在，这块逻辑需要在controller完成，但可以封装统一的检查机制
+        String username = enterpriseStaffRegistration.getUsername();
+        boolean isUserExisted = enterpriseStaffService.isUserExisted(username);
+        if (isUserExisted) {
+            return null;
+        }
+        boolean success = enterpriseStaffService.createEnterpriseStaff(enterpriseStaffRegistration);
         if (success) {
-            // TODO: 需要封装统一的请求返回结构体
-            return ResponseEntity.status(HttpStatus.CREATED).build();
+            return ApiResponse.success("");
         } else {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            return null;
         }
     }
 

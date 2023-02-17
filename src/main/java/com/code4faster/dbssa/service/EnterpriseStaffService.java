@@ -14,6 +14,8 @@ public interface EnterpriseStaffService {
 
     // Integer countAll();
 
+    boolean isUserExisted(String username);
+
     boolean createEnterpriseStaff(EnterpriseStaffRegistration enterpriseStaffRegistration);
 
     // boolean updateEnterpriseStaff(EnterpriseStaff enterpriseStaffDto);

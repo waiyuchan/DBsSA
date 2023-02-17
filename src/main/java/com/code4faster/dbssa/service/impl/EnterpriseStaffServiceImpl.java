@@ -1,6 +1,7 @@
 package com.code4faster.dbssa.service.impl;
 
 import com.code4faster.dbssa.common.utils.ModelClassUtils;
+import com.code4faster.dbssa.mbg.mapper.EnterpriseStaffExtendMapper;
 import com.code4faster.dbssa.mbg.mapper.EnterpriseStaffMapper;
 import com.code4faster.dbssa.mbg.model.EnterpriseStaff;
 import com.code4faster.dbssa.pojo.dto.EnterpriseStaffRegistration;
@@ -20,6 +21,9 @@ public class EnterpriseStaffServiceImpl implements EnterpriseStaffService {
     @Resource
     EnterpriseStaffMapper enterpriseStaffMapper;
 
+    @Resource
+    EnterpriseStaffExtendMapper enterpriseStaffExtendMapper;
+
     // @Override
     // public EnterpriseStaffDto queryEnterpriseStaffById(Integer id) {
     //     // EnterpriseStaff enterpriseStaff = enterpriseStaffMapper.selectByPrimaryKey(id);
@@ -37,6 +41,11 @@ public class EnterpriseStaffServiceImpl implements EnterpriseStaffService {
     //     return null;
     // }
 
+
+    @Override
+    public boolean isUserExisted(String username) {
+        return enterpriseStaffExtendMapper.queryByUsername(username) > 0;
+    }
 
     @Override
     public boolean createEnterpriseStaff(EnterpriseStaffRegistration enterpriseStaffRegistration) {
