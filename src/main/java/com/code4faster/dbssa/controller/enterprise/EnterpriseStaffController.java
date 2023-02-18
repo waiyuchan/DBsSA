@@ -1,14 +1,18 @@
 package com.code4faster.dbssa.controller.enterprise;
 
 import com.code4faster.dbssa.common.api.ApiResponse;
-// import com.code4faster.dbssa.pojo.dto.EnterpriseStaffDto;
 import com.code4faster.dbssa.common.api.ErrorCode;
+import com.code4faster.dbssa.mbg.model.EnterpriseStaff;
+import com.code4faster.dbssa.pojo.dto.EnterpriseStaffDetail;
+import com.code4faster.dbssa.pojo.dto.EnterpriseStaffItem;
 import com.code4faster.dbssa.pojo.dto.EnterpriseStaffRegistration;
+import com.code4faster.dbssa.pojo.dto.QueryResultSet;
 import com.code4faster.dbssa.service.EnterpriseStaffService;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@SuppressWarnings("rawtypes")
 @RestController
 @RequestMapping("/api/enterprise_staff")
 public class EnterpriseStaffController {
@@ -16,55 +20,61 @@ public class EnterpriseStaffController {
     @Autowired
     EnterpriseStaffService enterpriseStaffService;
 
+    /**
+     * 创建企业员工
+     *
+     * @param enterpriseStaffRegistration 企业员工注册信息
+     */
     @PostMapping
     public ApiResponse createEnterpriseStaff(@RequestBody EnterpriseStaffRegistration enterpriseStaffRegistration) {
-        // TODO: 首先需要保证创造用户的唯一性，即确认用户名是否已存在，这块逻辑需要在controller完成，但可以封装统一的检查机制
         String username = enterpriseStaffRegistration.getUsername();
         boolean isUserExisted = enterpriseStaffService.isUserExisted(username);
         if (isUserExisted) {
             return ApiResponse.failure(ErrorCode.USER_ALREADY_EXISTS);
         }
         boolean success = enterpriseStaffService.createEnterpriseStaff(enterpriseStaffRegistration);
-        if (success) {
-            return ApiResponse.success();
-        } else {
-            return ApiResponse.failure(ErrorCode.USER_CREATE_FAILURE);
-        }
+        return (success) ? ApiResponse.success() : ApiResponse.failure(ErrorCode.USER_CREATE_FAILURE);
     }
 
-    // @GetMapping
-    // public ResponseEntity<List<EnterpriseStaffDto>> getEnterpriseStaffList(@RequestParam(value = "offset", defaultValue = "0") Integer offset,
-    //                                                                        @RequestParam(value = "limit", defaultValue = "10") Integer limit) {
-    //     // List<EnterpriseStaffDto> enterpriseStaffDtos = enterpriseStaffService.queryEnterpriseStaffList(offset, limit);
-    //     // HttpHeaders headers = new HttpHeaders();
-    //     // headers.add("X-Total-Count", enterpriseStaffService.countAll().toString());
-    //     // return new ResponseEntity<>(enterpriseStaffDtos, headers, HttpStatus.OK);
-    //     return null;
-    // }
+    /**
+     * 获取企业员工列表
+     *
+     * @param offset 子查询每条时间序列返回数据点的偏移量，默认值是0，代表不限制返回点数量
+     * @param limit  子查询每条时间序列返回数据点的最大数目，默认值也是10，代表不偏移返回的数据点
+     * @return 企业员工列表数据
+     */
+    @GetMapping
+    public ApiResponse getEnterpriseStaffList(@RequestParam(value = "offset", defaultValue = "0") Integer offset,
+                                              @RequestParam(value = "limit", defaultValue = "10") Integer limit) {
+        PageInfo<EnterpriseStaffItem> enterpriseStaffItems = enterpriseStaffService.queryEnterpriseStaffList(offset, limit);
+        QueryResultSet queryResultSet = new QueryResultSet(enterpriseStaffItems.getSize(), enterpriseStaffItems.getList());
+        return ApiResponse.success(queryResultSet);
+    }
 
-    // @GetMapping("/{id}")
-    // public ResponseEntity<EnterpriseStaffDto> getEnterpriseStaffById(@PathVariable("id") Integer id) {
-    //     // EnterpriseStaffDto enterpriseStaffDto = enterpriseStaffService.queryEnterpriseStaffById(id);
-    //     // if (enterpriseStaffDto != null) {
-    //     //     return new ResponseEntity<>(enterpriseStaffDto, HttpStatus.OK);
-    //     // }
-    //     // return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    //     return null;
-    // }
+    /**
+     * 查询企业员工信息
+     *
+     * @param id 企业员工id
+     * @return 企业员工信息
+     */
+    @GetMapping("/{id}")
+    public ApiResponse getEnterpriseStaffById(@PathVariable("id") Integer id) {
+        EnterpriseStaffDetail enterpriseStaff = enterpriseStaffService.queryEnterpriseStaffById(id);
+        return ApiResponse.success(enterpriseStaff);
+    }
 
+    @PutMapping("/{id}")
+    public ApiResponse updateEnterpriseStaff(@PathVariable("id") Integer id, @RequestBody EnterpriseStaff enterpriseStaff) {
+        return null;
+    }
 
-    // @PutMapping("/{id}")
-    // public ResponseEntity<Void> updateEnterpriseStaff(@PathVariable("id") Integer id, @RequestBody EnterpriseStaffDto enterpriseStaffDto) {
-    //     // enterpriseStaffDto.setId(id);
-    //     // enterpriseStaffService.updateEnterpriseStaff(enterpriseStaffDto);
-    //     // return new ResponseEntity<>(HttpStatus.OK);
-    //     return null;
-    // }
+    @GetMapping("/delete/{id}")
+    public ApiResponse preDeleteEnterpriseStaff(@PathVariable("id") Integer id) {
+        return null;
+    }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteEnterpriseStaff(@PathVariable("id") Integer id) {
-        // enterpriseStaffService.deleteEnterpriseStaff(id);
-        // return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    public ApiResponse deleteEnterpriseStaff(@PathVariable("id") Integer id) {
         return null;
     }
 }

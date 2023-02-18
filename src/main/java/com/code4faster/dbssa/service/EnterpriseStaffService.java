@@ -1,18 +1,15 @@
 package com.code4faster.dbssa.service;
 
-import com.code4faster.dbssa.mbg.model.EnterpriseStaff;
-// import com.code4faster.dbssa.pojo.dto.EnterpriseStaffDto;
+import com.code4faster.dbssa.pojo.dto.EnterpriseStaffDetail;
+import com.code4faster.dbssa.pojo.dto.EnterpriseStaffItem;
 import com.code4faster.dbssa.pojo.dto.EnterpriseStaffRegistration;
-
-import java.util.List;
+import com.github.pagehelper.PageInfo;
 
 public interface EnterpriseStaffService {
 
-    // EnterpriseStaffDto queryEnterpriseStaffById(Integer id);
-    //
-    // List<EnterpriseStaffDto> queryEnterpriseStaffList(Integer offset, Integer limit);
+    EnterpriseStaffDetail queryEnterpriseStaffById(Integer id);
 
-    // Integer countAll();
+    PageInfo<EnterpriseStaffItem> queryEnterpriseStaffList(Integer offset, Integer limit);
 
     boolean isUserExisted(String username);
 

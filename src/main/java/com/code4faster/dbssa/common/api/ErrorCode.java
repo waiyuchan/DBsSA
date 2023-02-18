@@ -2,7 +2,7 @@ package com.code4faster.dbssa.common.api;
 
 public enum ErrorCode {
 
-    SUCCESS(0, "操作成功"),
+    SUCCESS(0, "请求成功"),
 
     INVALID_PARAMETERS(10001, "无效的参数"),
     MISSING_PARAMETERS(10002, ""),

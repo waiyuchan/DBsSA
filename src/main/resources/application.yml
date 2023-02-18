@@ -6,5 +6,15 @@ spring:
     url: jdbc:mysql://localhost:3306/dbssa
     username: root
     password: Test@1234
+
 mybatis:
   mapper-locations: classpath:mapper/*.xml
+  #  config-location: classpath:mybatis-config.xml
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+pagehelper:
+  helperDialect: mysql # 数据库方言
+  reasonable: true # 启用合理化时，如果 pageNum < 1 会查询第一页，如果 pageNum > pages 会查询最后一页
+  supportMethodsArguments: true # 支持通过 Mapper 接口参数来传递分页参数
+  params: count=countSql # 使用 countSql 时，需要设置为 true（默认为 false）

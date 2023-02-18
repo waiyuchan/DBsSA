@@ -21,11 +21,16 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
         </dependency>
 
         <!--        <dependency>-->
@@ -60,6 +65,40 @@
             <artifactId>mybatis-spring</artifactId>
             <version>2.0.7</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.4.6</version>
+        </dependency>
+
+        <!--        &lt;!&ndash; 日志配置 &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.slf4j</groupId>-->
+        <!--            <artifactId>slf4j-api</artifactId>-->
+        <!--            <version>1.8.0-alpha2</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            &lt;!&ndash; 桥接：告诉Slf4j使用Log4j2 &ndash;&gt;-->
+        <!--            <groupId>org.apache.logging.log4j</groupId>-->
+        <!--            <artifactId>log4j-slf4j-impl</artifactId>-->
+        <!--            <version>2.11.0</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency> &lt;!&ndash; 桥接：告诉commons logging使用Log4j2 &ndash;&gt;-->
+        <!--            <groupId>org.apache.logging.log4j</groupId>-->
+        <!--            <artifactId>log4j-jcl</artifactId>-->
+        <!--            <version>2.11.0</version>-->
+        <!--        </dependency>-->
+        <!--        &lt;!&ndash; Log4j2 &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.logging.log4j</groupId>-->
+        <!--            <artifactId>log4j-api</artifactId>-->
+        <!--            <version>2.11.0</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.logging.log4j</groupId>-->
+        <!--            <artifactId>log4j-core</artifactId>-->
+        <!--            <version>2.11.0</version>-->
+        <!--        </dependency>-->
 
         <dependency>
             <groupId>com.alibaba.fastjson2</groupId>
