@@ -1,18 +1,26 @@
 package com.code4faster.dbssa.common.api;
 
+import java.util.UUID;
+
 public class ApiResponse<T> {
 
     private long errorCode;
-    private String errorMessage;
+    private String errorMsg;
     private T data;
+    private String requestId;
 
     protected ApiResponse() {
     }
 
-    protected ApiResponse(long errorCode, String errorMessage, T data) {
+    protected ApiResponse(long errorCode, String errorMsg, T data) {
         this.errorCode = errorCode;
-        this.errorMessage = errorMessage;
+        this.errorMsg = errorMsg;
         this.data = data;
+        this.requestId = UUID.randomUUID().toString();
+    }
+
+    public static <T> ApiResponse<T> success() {
+        return new ApiResponse<T>(ErrorCode.SUCCESS.getCode(), ErrorCode.SUCCESS.getMessage(), null);
     }
 
 
@@ -96,6 +104,34 @@ public class ApiResponse<T> {
     //             data);
     // }
 
+
+    public long getErrorCode() {
+        return errorCode;
+    }
+
+    public void setErrorCode(long errorCode) {
+        this.errorCode = errorCode;
+    }
+
+    public String getErrorMsg() {
+        return errorMsg;
+    }
+
+    public void setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
+
+    public String getRequestId() {
+        return requestId;
+    }
 
 }
 

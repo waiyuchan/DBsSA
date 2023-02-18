@@ -2,6 +2,7 @@ package com.code4faster.dbssa.controller.enterprise;
 
 import com.code4faster.dbssa.common.api.ApiResponse;
 // import com.code4faster.dbssa.pojo.dto.EnterpriseStaffDto;
+import com.code4faster.dbssa.common.api.ErrorCode;
 import com.code4faster.dbssa.pojo.dto.EnterpriseStaffRegistration;
 import com.code4faster.dbssa.service.EnterpriseStaffService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +22,13 @@ public class EnterpriseStaffController {
         String username = enterpriseStaffRegistration.getUsername();
         boolean isUserExisted = enterpriseStaffService.isUserExisted(username);
         if (isUserExisted) {
-            return null;
+            return ApiResponse.failure(ErrorCode.USER_ALREADY_EXISTS);
         }
         boolean success = enterpriseStaffService.createEnterpriseStaff(enterpriseStaffRegistration);
         if (success) {
-            return ApiResponse.success("");
+            return ApiResponse.success();
         } else {
-            return null;
+            return ApiResponse.failure(ErrorCode.USER_CREATE_FAILURE);
         }
     }
 
