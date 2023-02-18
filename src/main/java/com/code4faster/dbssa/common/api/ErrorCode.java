@@ -39,8 +39,8 @@ public enum ErrorCode {
     REQUEST_TIMEOUT(50007, "");
 
 
-    private final long code;
-    private final String message;
+    private long code;
+    private String message;
 
     ErrorCode(int code, String message) {
         this.code = code;
