@@ -160,3 +160,4 @@ mvn mybatis-generator:generate
 
 ## 友情链接
 * 测试用例数据支持：[随机数据生成器](https://github.com/yindz/common-random)
+* 测试数据（文章/朋友圈类）支持：[狗屁不通文章生成器](https://github.com/2911921818/BullshitGenerator)
