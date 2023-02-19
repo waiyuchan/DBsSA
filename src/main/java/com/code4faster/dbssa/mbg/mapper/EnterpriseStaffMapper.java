@@ -1,7 +1,6 @@
 package com.code4faster.dbssa.mbg.mapper;
 
 import com.code4faster.dbssa.mbg.model.EnterpriseStaff;
-
 import java.util.List;
 
 public interface EnterpriseStaffMapper {

@@ -10,6 +10,8 @@ public class EnterpriseStaffRegistration {
 
     private String name;
 
+    private Integer gender;
+
     private String phone;
 
     private String address;
@@ -20,10 +22,11 @@ public class EnterpriseStaffRegistration {
 
     }
 
-    public EnterpriseStaffRegistration(String username, String password, String name, String phone, String address, Date entryDate, Date resignationDate) {
+    public EnterpriseStaffRegistration(String username, String password, String name, Integer gender, String phone, String address, Date entryDate, Date resignationDate) {
         this.username = username;
         this.password = password;
         this.name = name;
+        this.gender = gender;
         this.phone = phone;
         this.address = address;
         this.entryDate = entryDate;
@@ -53,6 +56,14 @@ public class EnterpriseStaffRegistration {
         this.name = name;
     }
 
+    public Integer getGender() {
+        return gender;
+    }
+
+    public void setGender(Integer gender) {
+        this.gender = gender;
+    }
+
     public String getPhone() {
         return phone;
     }
@@ -77,13 +88,13 @@ public class EnterpriseStaffRegistration {
         this.entryDate = entryDate;
     }
 
-
     @Override
     public String toString() {
         return "EnterpriseStaffRegistration{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
+                ", gender=" + gender +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
                 ", entryDate=" + entryDate +

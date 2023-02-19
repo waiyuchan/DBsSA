@@ -12,7 +12,13 @@ public class EnterpriseStaff implements Serializable {
 
     private String name;
 
+    private Integer gender;
+
+    private String idCard;
+
     private String email;
+
+    private String entMail;
 
     private String phone;
 
@@ -60,12 +66,36 @@ public class EnterpriseStaff implements Serializable {
         this.name = name == null ? null : name.trim();
     }
 
+    public Integer getGender() {
+        return gender;
+    }
+
+    public void setGender(Integer gender) {
+        this.gender = gender;
+    }
+
+    public String getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard == null ? null : idCard.trim();
+    }
+
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email == null ? null : email.trim();
+    }
+
+    public String getEntMail() {
+        return entMail;
+    }
+
+    public void setEntMail(String entMail) {
+        this.entMail = entMail == null ? null : entMail.trim();
     }
 
     public String getPhone() {
@@ -126,7 +156,10 @@ public class EnterpriseStaff implements Serializable {
         sb.append(", username=").append(username);
         sb.append(", password=").append(password);
         sb.append(", name=").append(name);
+        sb.append(", gender=").append(gender);
+        sb.append(", idCard=").append(idCard);
         sb.append(", email=").append(email);
+        sb.append(", entMail=").append(entMail);
         sb.append(", phone=").append(phone);
         sb.append(", address=").append(address);
         sb.append(", entryDate=").append(entryDate);

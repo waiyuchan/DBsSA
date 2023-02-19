@@ -6,7 +6,10 @@
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="gender" jdbcType="INTEGER" property="gender" />
+    <result column="id_card" jdbcType="VARCHAR" property="idCard" />
     <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="ent_mail" jdbcType="VARCHAR" property="entMail" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="entry_date" jdbcType="DATE" property="entryDate" />
@@ -23,11 +26,13 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into enterprise_staff (username, password, name, 
-      email, phone, address, 
+      gender, id_card, email, 
+      ent_mail, phone, address, 
       entry_date, status, resignation_date, 
       create_time)
     values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=INTEGER}, #{idCard,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{entMail,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
       #{entryDate,jdbcType=DATE}, #{status,jdbcType=INTEGER}, #{resignationDate,jdbcType=DATE}, 
       #{createTime,jdbcType=TIMESTAMP})
   </insert>
@@ -36,7 +41,10 @@
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=INTEGER},
+      id_card = #{idCard,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
+      ent_mail = #{entMail,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
       entry_date = #{entryDate,jdbcType=DATE},
@@ -46,14 +54,14 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, username, password, name, email, phone, address, entry_date, status, resignation_date, 
-    create_time
+    select id, username, password, name, gender, id_card, email, ent_mail, phone, address, 
+    entry_date, status, resignation_date, create_time
     from enterprise_staff
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, username, password, name, email, phone, address, entry_date, status, resignation_date, 
-    create_time
+    select id, username, password, name, gender, id_card, email, ent_mail, phone, address, 
+    entry_date, status, resignation_date, create_time
     from enterprise_staff
   </select>
 </mapper>
