@@ -1,14 +1,17 @@
 package com.code4faster.dbssa.common.utils;
 
 import cn.hutool.extra.pinyin.PinyinUtil;
+import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson2.JSONArray;
+import com.alibaba.fastjson2.JSONObject;
 import com.apifan.common.random.RandomSource;
 import com.apifan.common.random.constant.Province;
+import org.springframework.core.io.ClassPathResource;
 
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-import java.util.Random;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -169,23 +172,84 @@ public class TestCaseGeneratorUtils {
         return RandomSource.dateTimeSource().randomFutureDate("yyyy-MM-dd");
     }
 
-    public static void main(String[] args) {
-        for (int i = 0; i < 10; i++) {
-            int gender = getNum(0, 1);
-            String name = generateName(gender);
-            String username = generateUsername(name);
-            String phoneNum = generateTelephoneNum();
-            String password = generatePassword();
-            String email = RandomSource.internetSource().randomEmail(15);
-            String enterpriseMail = generateEnterpriseMail(username);
-            String IdCard = generateIdCard(gender);
-            String degree = generateDegree();
-            String college = generateCollege();
-            String address = generateAddress();
-            String entryDate = generateEntryDate();
-            int status = 0;
-            System.out.println(IdCard);
+    private static String randomSentence(List<String> list) {
+        return list.get((int) Math.floor(Math.random() * list.size()));
+    }
+
+    private static List<String> getArticleJSONList(String key) {
+        BufferedReader reader = null;
+        StringBuilder sb = new StringBuilder();
+        try {
+            reader = new BufferedReader(new FileReader("resources/metadata/article.json"));
+            String tempStr = null;
+            while ((tempStr = reader.readLine()) != null) {
+                sb.append(tempStr);
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
+        String jsonContent = sb.toString();
+        JSONObject jsonObject = JSON.parseObject(jsonContent);
+        JSONArray jsonArray = jsonObject.getJSONArray(key);
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < jsonArray.size(); i++) {
+            list.add(jsonArray.getString(i));
+        }
+        return list;
+    }
+
+    public static String generateArticle(String title, Integer length) {
+        if (length == null) {
+            length = 800; // 默认生成 800 字文章
+        }
+        List<String> famousList = getArticleJSONList("famous");
+        List<String> boshList = getArticleJSONList("bosh");
+        List<String> beforeList = getArticleJSONList("before");
+        List<String> afterList = getArticleJSONList("after");
+        StringBuilder content = new StringBuilder();
+        while (content.length() < length) {
+            int num = (int) ((Math.random()) * 100);
+            if (num < 10) {
+                content.append("<br>");
+            } else if (num < 20) {
+                content.append(randomSentence(famousList)
+                        .replace("a", randomSentence(beforeList))
+                        .replace("b", randomSentence(afterList)));
+            } else {
+                content.append(randomSentence(boshList));
+            }
+        }
+        return content.toString().replace("x", title);
+    }
+
+    public static void main(String[] args) {
+        // for (int i = 0; i < 10; i++) {
+        //     int gender = getNum(0, 1);
+        //     String name = generateName(gender);
+        //     String username = generateUsername(name);
+        //     String phoneNum = generateTelephoneNum();
+        //     String password = generatePassword();
+        //     String email = RandomSource.internetSource().randomEmail(15);
+        //     String enterpriseMail = generateEnterpriseMail(username);
+        //     String IdCard = generateIdCard(gender);
+        //     String degree = generateDegree();
+        //     String college = generateCollege();
+        //     String address = generateAddress();
+        //     String entryDate = generateEntryDate();
+        //     int status = 0;
+        //     System.out.println(IdCard);
+        // }
+        String articles = generateArticle("幸福", 100);
+        System.out.println(articles);
     }
 
 }
