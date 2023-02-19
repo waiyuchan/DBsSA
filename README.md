@@ -157,3 +157,6 @@ compliant, and intelligent digital services for student apartments.
 ```bash
 mvn mybatis-generator:generate
 ```
+
+## 友情链接
+* 测试用例数据支持：[随机数据生成器](https://github.com/yindz/common-random)
