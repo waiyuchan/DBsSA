@@ -1,4 +1,4 @@
-<font size="10"><strong>DBsSA: Digital British-style Student Apartments (数字化英式学生公寓)</strong></font>
+# DBsSA: Digital British-style Student Apartments
 
 ![](https://img.shields.io/badge/language-Java-orange.svg)
 ![](https://img.shields.io/badge/backend_frame-Spring_Boot-6db33f.svg)
@@ -13,22 +13,28 @@
 - [DBsSA 项目介绍 (Project Introduction)](#dbssa-项目介绍-project-introduction)
 - [DBsSA 相关项目传送门 (Portal of DBsSA-related Projects)](#dbssa-相关项目传送门-portal-of-dbssa-related-projects)
 - [功能规划 (Functional Planning)](#功能规划-functional-planning)
-  - [🏢 企业运营端](#-企业运营端)
-  - [🏠 公寓运营端](#-公寓运营端)
-  - [👨🏻‍🎓 公寓住户端](#-公寓住户端)
-  - [🧑🏻‍💻 公寓预订系统](#-公寓预订系统)
-  - [🎬 公寓影院](#-公寓影院)
-  - [🏬 公寓二手交易平台](#-公寓二手交易平台)
+    - [🏢 企业运营端](#-企业运营端)
+    - [🏠 公寓运营端](#-公寓运营端)
+    - [👨🏻‍🎓 公寓住户端](#-公寓住户端)
+    - [🧑🏻‍💻 公寓预订系统](#-公寓预订系统)
+    - [🎬 公寓影院](#-公寓影院)
+    - [🏬 公寓二手交易平台](#-公寓二手交易平台)
 - [系统架构设计](#系统架构设计)
 - [接口设计](#接口设计)
-  - [接口文档](#接口文档)
-  - [接口错误码](#接口错误码)
+    - [接口文档](#接口文档)
+    - [接口错误码](#接口错误码)
 - [Mock的服务](#mock的服务)
 - [项目指引](#项目指引)
 
 ## DBsSA 项目介绍 (Project Introduction)
 
-该项目旨在将英式学生公寓的繁杂流程进行树立和抽象，映射为数字化信息流程。基于SpringBoot + MyBatis框架，结合大数据技术、人工智能算法、区块链服务，进一步提供高效化、合规化、智能化的xueshegngongy
+该项目旨在将英式学生公寓的日常繁杂的手工流程进行梳理和抽象，映射为数字化信息流程。 项目基于SpringBoot +
+MyBatis框架，结合大数据技术、人工智能算法、区块链服务搭建而成，进一步提供高效化、合规化、智能化的学生公寓数字化服务。
+
+The project aims to sort out and abstract the daily complicated manual processes of British-style student apartments,
+and map them into digital information processes. The project is based on the SpringBoot + MyBatis framework, combined
+with Big Data Technology, Artificial Intelligence Algorithms, and Blockchain Services, to further provide efficient,
+compliant, and intelligent digital services for student apartments.
 
 ## DBsSA 相关项目传送门 (Portal of DBsSA-related Projects)
 
