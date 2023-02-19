@@ -10,6 +10,14 @@ public class EnterpriseStaffRegistration {
 
     private String name;
 
+    private String idCard;
+
+    private String degree;
+
+    private String college;
+
+    private String email;
+
     private Integer gender;
 
     private String phone;
@@ -22,10 +30,14 @@ public class EnterpriseStaffRegistration {
 
     }
 
-    public EnterpriseStaffRegistration(String username, String password, String name, Integer gender, String phone, String address, Date entryDate, Date resignationDate) {
+    public EnterpriseStaffRegistration(String username, String password, String name, String idCard, String degree, String college, String email, Integer gender, String phone, String address, Date entryDate) {
         this.username = username;
         this.password = password;
         this.name = name;
+        this.idCard = idCard;
+        this.degree = degree;
+        this.college = college;
+        this.email = email;
         this.gender = gender;
         this.phone = phone;
         this.address = address;
@@ -54,6 +66,38 @@ public class EnterpriseStaffRegistration {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
+    }
+
+    public String getDegree() {
+        return degree;
+    }
+
+    public void setDegree(String degree) {
+        this.degree = degree;
+    }
+
+    public String getCollege() {
+        return college;
+    }
+
+    public void setCollege(String college) {
+        this.college = college;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Integer getGender() {
@@ -94,6 +138,10 @@ public class EnterpriseStaffRegistration {
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
+                ", idCard='" + idCard + '\'' +
+                ", degree='" + degree + '\'' +
+                ", college='" + college + '\'' +
+                ", email='" + email + '\'' +
                 ", gender=" + gender +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +

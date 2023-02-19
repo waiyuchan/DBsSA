@@ -16,6 +16,10 @@ public class EnterpriseStaff implements Serializable {
 
     private String idCard;
 
+    private String degree;
+
+    private String college;
+
     private String email;
 
     private String entMail;
@@ -80,6 +84,22 @@ public class EnterpriseStaff implements Serializable {
 
     public void setIdCard(String idCard) {
         this.idCard = idCard == null ? null : idCard.trim();
+    }
+
+    public String getDegree() {
+        return degree;
+    }
+
+    public void setDegree(String degree) {
+        this.degree = degree == null ? null : degree.trim();
+    }
+
+    public String getCollege() {
+        return college;
+    }
+
+    public void setCollege(String college) {
+        this.college = college == null ? null : college.trim();
     }
 
     public String getEmail() {
@@ -158,6 +178,8 @@ public class EnterpriseStaff implements Serializable {
         sb.append(", name=").append(name);
         sb.append(", gender=").append(gender);
         sb.append(", idCard=").append(idCard);
+        sb.append(", degree=").append(degree);
+        sb.append(", college=").append(college);
         sb.append(", email=").append(email);
         sb.append(", entMail=").append(entMail);
         sb.append(", phone=").append(phone);

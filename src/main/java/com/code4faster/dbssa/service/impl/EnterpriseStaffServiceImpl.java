@@ -19,6 +19,7 @@ import java.util.List;
 public class EnterpriseStaffServiceImpl implements EnterpriseStaffService {
 
     protected Integer DEFAULT_INITIAL_VALUE = 0;
+    protected String ENTERPRISE_MAIL_SUFFIX = "@code4faster";
 
     @Resource
     EnterpriseStaffMapper enterpriseStaffMapper;
@@ -47,10 +48,10 @@ public class EnterpriseStaffServiceImpl implements EnterpriseStaffService {
     @Override
     public boolean createEnterpriseStaff(EnterpriseStaffRegistration enterpriseStaffRegistration) {
         EnterpriseStaff enterpriseStaff = ModelClassUtils.copyValueOfSameProperties(enterpriseStaffRegistration, EnterpriseStaff.class);
-        String email = enterpriseStaff.getUsername() + "@code4faster.com";
+        String entMail = enterpriseStaff.getUsername() + ENTERPRISE_MAIL_SUFFIX;
         enterpriseStaff.setId(DEFAULT_INITIAL_VALUE);
         enterpriseStaff.setStatus(DEFAULT_INITIAL_VALUE);
-        enterpriseStaff.setEmail(email);
+        enterpriseStaff.setEntMail(entMail);
         enterpriseStaff.setCreateTime(new java.sql.Date(new java.util.Date().getTime()));
         int row = enterpriseStaffMapper.insert(enterpriseStaff);
         return row > 0;

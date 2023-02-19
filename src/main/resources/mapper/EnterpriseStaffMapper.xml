@@ -8,6 +8,8 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="gender" jdbcType="INTEGER" property="gender" />
     <result column="id_card" jdbcType="VARCHAR" property="idCard" />
+    <result column="degree" jdbcType="VARCHAR" property="degree" />
+    <result column="college" jdbcType="VARCHAR" property="college" />
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="ent_mail" jdbcType="VARCHAR" property="entMail" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
@@ -26,15 +28,17 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into enterprise_staff (username, password, name, 
-      gender, id_card, email, 
-      ent_mail, phone, address, 
-      entry_date, status, resignation_date, 
-      create_time)
+      gender, id_card, degree, 
+      college, email, ent_mail, 
+      phone, address, entry_date, 
+      status, resignation_date, create_time
+      )
     values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
-      #{gender,jdbcType=INTEGER}, #{idCard,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{entMail,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{entryDate,jdbcType=DATE}, #{status,jdbcType=INTEGER}, #{resignationDate,jdbcType=DATE}, 
-      #{createTime,jdbcType=TIMESTAMP})
+      #{gender,jdbcType=INTEGER}, #{idCard,jdbcType=VARCHAR}, #{degree,jdbcType=VARCHAR}, 
+      #{college,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{entMail,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{entryDate,jdbcType=DATE}, 
+      #{status,jdbcType=INTEGER}, #{resignationDate,jdbcType=DATE}, #{createTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.EnterpriseStaff">
     update enterprise_staff
@@ -43,6 +47,8 @@
       name = #{name,jdbcType=VARCHAR},
       gender = #{gender,jdbcType=INTEGER},
       id_card = #{idCard,jdbcType=VARCHAR},
+      degree = #{degree,jdbcType=VARCHAR},
+      college = #{college,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       ent_mail = #{entMail,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
@@ -54,14 +60,14 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, username, password, name, gender, id_card, email, ent_mail, phone, address, 
-    entry_date, status, resignation_date, create_time
+    select id, username, password, name, gender, id_card, degree, college, email, ent_mail, 
+    phone, address, entry_date, status, resignation_date, create_time
     from enterprise_staff
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, username, password, name, gender, id_card, email, ent_mail, phone, address, 
-    entry_date, status, resignation_date, create_time
+    select id, username, password, name, gender, id_card, degree, college, email, ent_mail, 
+    phone, address, entry_date, status, resignation_date, create_time
     from enterprise_staff
   </select>
 </mapper>
