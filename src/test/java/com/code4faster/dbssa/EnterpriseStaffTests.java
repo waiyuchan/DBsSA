@@ -28,13 +28,14 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class EnterpriseStaffControllerTests {
+public class EnterpriseStaffTests {
 
     @LocalServerPort
     private int port;
@@ -52,8 +53,7 @@ public class EnterpriseStaffControllerTests {
     }
 
     @Test
-    // @RepeatedTest(5000)
-    public void enterpriseStaffTestCase() {
+    public void caseCreateEnterpriseStaff() {
         // 创建用户
         String createUserUrl = baseUrl + port + "/api/enterprise_staff";
         Map<String, Object> createUserRequestBody = new HashMap<>();
@@ -87,9 +87,32 @@ public class EnterpriseStaffControllerTests {
 
         // 验证响应数据是否正确
         assert createUserResponse != null;
+        if (createUserResponse.get("errorMsg").toString().equals("10006")) {
+            createUserRequestBody.put("username", username + "_0" + Integer.toString(TestCaseGeneratorUtils.getNum(1, 100)));
+            HttpEntity<Map<String, Object>> createUserRequestAgain = new HttpEntity<>(createUserRequestBody, headers);
+            Map<String, Object> createUserResponseAgain = restTemplate.exchange(createUserUrl, HttpMethod.POST, createUserRequestAgain, Map.class).getBody();
+            assertEquals(createUserResponseAgain.get("errorCode"), 0);
+            assertEquals(createUserResponseAgain.get("errorMsg"), "请求成功");
+        }
         assertEquals(createUserResponse.get("errorCode"), 0);
         assertEquals(createUserResponse.get("errorMsg"), "请求成功");
 
+    }
+
+    @Test
+    public void caseGetEnterpriseStaffList() {
+        int offset = 0;
+        int limit = TestCaseGeneratorUtils.getNum(1, 100);
+        String getEnterpriseStaffListUrl = baseUrl + port + "/api/enterprise_staff?offset=" + offset + "&limit=" + limit;
+        Map<String, Object> getUserResponse = restTemplate.exchange(getEnterpriseStaffListUrl, HttpMethod.GET, new HttpEntity<>(headers), Map.class).getBody();
+
+        // 验证响应数据是否正确
+        assert getUserResponse != null;
+        System.out.println(getUserResponse);
+        assertEquals(getUserResponse.get("errorCode"), 0);
+        assertEquals(getUserResponse.get("errorMsg"), "请求成功");
+        Map<String, Object> map = (Map<String, Object>) getUserResponse.get("data");
+        assertEquals(map.get("total"), limit);
     }
 
 }
