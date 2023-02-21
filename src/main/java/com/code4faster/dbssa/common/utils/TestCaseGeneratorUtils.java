@@ -149,7 +149,7 @@ public class TestCaseGeneratorUtils {
     /**
      * 随机生成毕业院校
      *
-     * @return 毕业院校
+     * @return 毕业院校（不会区分大专院校和本科院校）
      */
     public static String generateCollege() {
         return RandomSource.educationSource().randomCollege();
@@ -158,24 +158,46 @@ public class TestCaseGeneratorUtils {
     /**
      * 随机生成带特殊字符的密码
      *
-     * @return 密码
+     * @return 随机密码
      */
     public static String generatePassword() {
         return RandomSource.personInfoSource().randomStrongPassword(16, true);
     }
 
+    /**
+     * 随机生成地址
+     *
+     * @return 随机的详细地址
+     */
     public static String generateAddress() {
         return RandomSource.areaSource().randomAddress();
     }
 
+    /**
+     * 随机生成入职日期
+     *
+     * @return `yyyy-MM-dd`格式的入职日期
+     */
     public static String generateEntryDate() {
         return RandomSource.dateTimeSource().randomFutureDate("yyyy-MM-dd");
     }
 
+    /**
+     * 随机内容抽取器
+     *
+     * @param list 文章内容集合
+     * @return 随机获取到的内容
+     */
     private static String randomSentence(List<String> list) {
         return list.get((int) Math.floor(Math.random() * list.size()));
     }
 
+    /**
+     * 从JSON文件中获取文本内容
+     *
+     * @param key 主题关键词
+     * @return 随机生成的文本内容
+     */
     private static List<String> getArticleJSONList(String key) {
         BufferedReader reader = null;
         StringBuilder sb = new StringBuilder();
@@ -207,6 +229,13 @@ public class TestCaseGeneratorUtils {
         return list;
     }
 
+    /**
+     * 根据主题和长度随机生成文章
+     *
+     * @param title  主题
+     * @param length 文章长度
+     * @return 文章内容
+     */
     public static String generateArticle(String title, Integer length) {
         if (length == null) {
             length = 800; // 默认生成 800 字文章
