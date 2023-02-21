@@ -10,21 +10,23 @@
 
 <font size="5"><strong>目录<strong></font>
 
-- [DBsSA 项目介绍 (Project Introduction)](#dbssa-项目介绍-project-introduction)
-- [DBsSA 相关项目传送门 (Portal of DBsSA-related Projects)](#dbssa-相关项目传送门-portal-of-dbssa-related-projects)
-- [功能规划 (Functional Planning)](#功能规划-functional-planning)
+  - [DBsSA 项目介绍 (Project Introduction)](#dbssa-项目介绍-project-introduction)
+  - [DBsSA 相关项目传送门 (Portal of DBsSA-related Projects)](#dbssa-相关项目传送门-portal-of-dbssa-related-projects)
+  - [功能规划 (Functional Planning)](#功能规划-functional-planning)
     - [🏢 企业运营端](#-企业运营端)
     - [🏠 公寓运营端](#-公寓运营端)
     - [👨🏻‍🎓 公寓住户端](#-公寓住户端)
     - [🧑🏻‍💻 公寓预订系统](#-公寓预订系统)
     - [🎬 公寓影院](#-公寓影院)
     - [🏬 公寓二手交易平台](#-公寓二手交易平台)
-- [系统架构设计](#系统架构设计)
-- [接口设计](#接口设计)
+    - [📱 公寓社区](#-公寓社区)
+  - [系统架构设计](#系统架构设计)
+  - [接口设计](#接口设计)
     - [接口文档](#接口文档)
     - [接口错误码](#接口错误码)
-- [Mock的服务](#mock的服务)
-- [项目指引](#项目指引)
+  - [Mock的服务](#mock的服务)
+  - [项目指引](#项目指引)
+  - [友情链接](#友情链接)
 
 ## DBsSA 项目介绍 (Project Introduction)
 
@@ -130,6 +132,8 @@ compliant, and intelligent digital services for student apartments.
 - [ ] 二手商品交易
 - [ ] 物流跟踪
 - [ ] 买卖家交流
+
+### 📱 公寓社区
 
 ## 系统架构设计
 

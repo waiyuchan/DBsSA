@@ -1,6 +1,10 @@
-<font size="10"><strong>DBsSA 接口错误码文档 （DBsSA API Error Code Document）</strong></font>
+# DBsSA 接口错误码文档 （DBsSA API Error Code Document）
 
 ---
+
+- [公共错误码](#公共错误码)
+- [业务错误码](#业务错误码)
+
 
 ## 公共错误码
 
