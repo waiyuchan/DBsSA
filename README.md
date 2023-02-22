@@ -44,7 +44,7 @@ compliant, and intelligent digital services for student apartments.
 | --- | --- | --- |
 | Web前端 (Web Frontend) | Vue.js + TypeScript | [~~敬请期待 (Coming Soon)~~]() |
 | 移动端Android App (Mobile Android App) | Kotlin | [~~敬请期待 (Coming Soon)~~]() |
-| 区块链服务 (Blockchain Service) | Golang | [氢链（自研简易区块链服务）](https://github.com/weiyuchens/HydrogenChain) |
+| 区块链服务 (Blockchain Service) | Golang | [氢链（HydrogenChain）](https://github.com/weiyuchens/HydrogenChain) |
 | 推荐算法 (Recommendation Algorithm) | Java、Python、C++ | [~~敬请期待 (Coming Soon)~~]() |
 | 即时通讯组件 (Instant Messaging Component) | C++、Java、Python | [~~敬请期待 (Coming Soon)~~]() |
 | 影院终端桌面版 (Cinema Terminal Desktop Version) | C++ | [~~敬请期待 (Coming Soon)~~]() |
