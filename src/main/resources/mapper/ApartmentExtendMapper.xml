@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.code4faster.dbssa.mbg.mapper.ApartmentExtendMapper">
+    <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.Apartment">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="apartment_name" jdbcType="VARCHAR" property="apartmentName"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="official_phone" jdbcType="VARCHAR" property="officialPhone"/>
+        <result column="floor_number" jdbcType="INTEGER" property="floorNumber"/>
+        <result column="number_of_rooms" jdbcType="INTEGER" property="numberOfRooms"/>
+        <result column="number_of_bedrooms" jdbcType="INTEGER" property="numberOfBedrooms"/>
+        <result column="number_of_bathrooms" jdbcType="INTEGER" property="numberOfBathrooms"/>
+        <result column="number_of_public_rooms" jdbcType="INTEGER" property="numberOfPublicRooms"/>
+        <result column="floor_space" jdbcType="VARCHAR" property="floorSpace"/>
+        <result column="maximum_rent" jdbcType="INTEGER" property="maximumRent"/>
+        <result column="create_date" jdbcType="DATE" property="createDate"/>
+        <result column="start_date" jdbcType="DATE" property="startDate"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+    <select id="queryByApartmentName" parameterType="java.lang.String" resultType="int">
+        select count(*)
+        from apartment
+        where apartment_name = #{apartmentName,jdbcType=VARCHAR}
+          and status = 0
+    </select>
+    <select id="queryApartmentList" resultMap="BaseResultMap">
+        select id,
+               apartment_name,
+               address,
+               official_phone,
+               floor_number,
+               number_of_rooms,
+               number_of_bedrooms,
+               number_of_bathrooms,
+               number_of_public_rooms,
+               floor_space,
+               maximum_rent,
+               create_date,
+               start_date,
+               status,
+               create_time
+        from apartment
+        where status = 0
+    </select>
+    <select id="queryApartmentNameById" parameterType="java.lang.Integer" resultType="String">
+        select apartment_name
+        from apartment
+        where id = #{id}
+          and status = 0
+    </select>
+</mapper>

@@ -20,6 +20,11 @@
         where username = #{username}
           and status = 0
     </select>
+    <select id="queryUsernameById" parameterType="java.lang.Integer" resultType="String">
+        select username
+        from enterprise_staff
+        where id = #{id} and status = 0
+    </select>
     <select id="queryStaffList" resultMap="BaseResultMap">
         select id,
                username,

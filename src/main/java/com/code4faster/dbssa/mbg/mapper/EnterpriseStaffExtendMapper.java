@@ -13,4 +13,6 @@ public interface EnterpriseStaffExtendMapper extends EnterpriseStaffMapper {
 
     int updateStaffInfo(EnterpriseStaffModify enterpriseStaffModify);
 
+    String queryUsernameById(Integer id);
+
 }

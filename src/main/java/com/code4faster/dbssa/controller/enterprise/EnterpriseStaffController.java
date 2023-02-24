@@ -62,20 +62,22 @@ public class EnterpriseStaffController {
     /**
      * 更新企业员工信息
      *
-     * @param id                    企业员工id
      * @param enterpriseStaffModify 企业员工待更新信息
      * @return 无
      */
-    @PutMapping("/{id}")
-    public ApiResponse updateEnterpriseStaff(@PathVariable("id") Integer id, @RequestBody EnterpriseStaffModify enterpriseStaffModify) {
+    @PutMapping
+    public ApiResponse updateEnterpriseStaff(@RequestBody EnterpriseStaffModify enterpriseStaffModify) {
+        Integer id = enterpriseStaffModify.getId();
         String username = enterpriseStaffModify.getUsername();
-        boolean isUserExisted = enterpriseStaffService.isUserExisted(username);
-        if (isUserExisted) {
-            return ApiResponse.failure(ErrorCode.USER_ALREADY_EXISTS);
-        } else {
-            boolean success = enterpriseStaffService.updateEnterpriseStaff(enterpriseStaffModify);
-            return (success) ? ApiResponse.success() : ApiResponse.failure(ErrorCode.RESOURCE_UPDATE_FAILED);
+        boolean isUsernameChanged = enterpriseStaffService.isUsernameChanged(id, username);
+        if (!isUsernameChanged) {
+            boolean isUserExisted = enterpriseStaffService.isUserExisted(username);
+            if (isUserExisted) {
+                return ApiResponse.failure(ErrorCode.USER_ALREADY_EXISTS);
+            }
         }
+        boolean success = enterpriseStaffService.updateEnterpriseStaff(enterpriseStaffModify);
+        return (success) ? ApiResponse.success() : ApiResponse.failure(ErrorCode.RESOURCE_UPDATE_FAILED);
     }
 
     // @GetMapping("/delete/{id}")

@@ -16,6 +16,8 @@ public interface EnterpriseStaffService {
 
     boolean isUserExisted(Integer id);
 
+    boolean isUsernameChanged(Integer id, String username);
+
     boolean createEnterpriseStaff(EnterpriseStaffRegistration enterpriseStaffRegistration);
 
     boolean updateEnterpriseStaff(EnterpriseStaffModify enterpriseStaffModify);

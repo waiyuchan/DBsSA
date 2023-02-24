@@ -52,6 +52,12 @@ public class EnterpriseStaffServiceImpl implements EnterpriseStaffService {
     }
 
     @Override
+    public boolean isUsernameChanged(Integer id, String username) {
+        String storageUsername = enterpriseStaffExtendMapper.queryUsernameById(id);
+        return storageUsername.equals(username);
+    }
+
+    @Override
     public boolean createEnterpriseStaff(EnterpriseStaffRegistration enterpriseStaffRegistration) {
         EnterpriseStaff enterpriseStaff = ModelClassUtils.copyValueOfSameProperties(enterpriseStaffRegistration, EnterpriseStaff.class);
         String entMail = enterpriseStaff.getUsername() + ENTERPRISE_MAIL_SUFFIX;
