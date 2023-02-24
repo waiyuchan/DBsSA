@@ -3,12 +3,10 @@ package com.code4faster.dbssa.controller.enterprise;
 import com.code4faster.dbssa.common.api.ApiResponse;
 import com.code4faster.dbssa.common.api.ErrorCode;
 import com.code4faster.dbssa.mbg.model.EnterpriseStaff;
-import com.code4faster.dbssa.pojo.dto.EnterpriseStaffDetail;
-import com.code4faster.dbssa.pojo.dto.EnterpriseStaffItem;
-import com.code4faster.dbssa.pojo.dto.EnterpriseStaffRegistration;
-import com.code4faster.dbssa.pojo.dto.QueryResultSet;
+import com.code4faster.dbssa.pojo.dto.*;
 import com.code4faster.dbssa.service.EnterpriseStaffService;
 import com.github.pagehelper.PageInfo;
+import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -63,18 +61,32 @@ public class EnterpriseStaffController {
         return ApiResponse.success(enterpriseStaff);
     }
 
+    /**
+     * 更新企业员工信息
+     *
+     * @param id                    企业员工id
+     * @param enterpriseStaffModify 企业员工待更新信息
+     * @return 无
+     */
     @PutMapping("/{id}")
-    public ApiResponse updateEnterpriseStaff(@PathVariable("id") Integer id, @RequestBody EnterpriseStaff enterpriseStaff) {
-        return null;
+    public ApiResponse updateEnterpriseStaff(@PathVariable("id") Integer id, @RequestBody EnterpriseStaffModify enterpriseStaffModify) {
+        String username = enterpriseStaffModify.getUsername();
+        boolean isUserExisted = enterpriseStaffService.isUserExisted(username);
+        if (isUserExisted) {
+            return ApiResponse.failure(ErrorCode.USER_ALREADY_EXISTS);
+        } else {
+            boolean success = enterpriseStaffService.updateEnterpriseStaff(enterpriseStaffModify);
+            return (success) ? ApiResponse.success() : ApiResponse.failure(ErrorCode.RESOURCE_UPDATE_FAILED);
+        }
     }
 
-    @GetMapping("/delete/{id}")
-    public ApiResponse preDeleteEnterpriseStaff(@PathVariable("id") Integer id) {
-        return null;
-    }
-
-    @DeleteMapping("/{id}")
-    public ApiResponse deleteEnterpriseStaff(@PathVariable("id") Integer id) {
-        return null;
-    }
+    // @GetMapping("/delete/{id}")
+    // public ApiResponse preDeleteEnterpriseStaff(@PathVariable("id") Integer id) {
+    //     return null;
+    // }
+    //
+    // @DeleteMapping("/{id}")
+    // public ApiResponse deleteEnterpriseStaff(@PathVariable("id") Integer id) {
+    //     return null;
+    // }
 }

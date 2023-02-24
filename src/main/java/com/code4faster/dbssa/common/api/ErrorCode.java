@@ -27,6 +27,7 @@ public enum ErrorCode {
     INVALID_NONCE(12005, ""),
 
     RESOURCE_NOT_FOUND(30001, ""),
+    RESOURCE_UPDATE_FAILED(30002, "资源更新失败"),
 
     SYSTEM_ERROR(40001, ""),
 

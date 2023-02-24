@@ -28,6 +28,25 @@
                phone,
                entry_date,
                create_time
-        from enterprise_staff where status = 0
+        from enterprise_staff
+        where status = 0
     </select>
+    <update id="updateStaffInfo" parameterType="com.code4faster.dbssa.pojo.dto.EnterpriseStaffModify">
+        update enterprise_staff
+        set username         = #{username,jdbcType=VARCHAR},
+            password         = #{password,jdbcType=VARCHAR},
+            name             = #{name,jdbcType=VARCHAR},
+            gender           = #{gender,jdbcType=INTEGER},
+            id_card          = #{idCard,jdbcType=VARCHAR},
+            degree           = #{degree,jdbcType=VARCHAR},
+            college          = #{college,jdbcType=VARCHAR},
+            email            = #{email,jdbcType=VARCHAR},
+            ent_mail         = #{entMail,jdbcType=VARCHAR},
+            phone            = #{phone,jdbcType=VARCHAR},
+            address          = #{address,jdbcType=VARCHAR},
+            entry_date       = #{entryDate,jdbcType=DATE},
+            status           = #{status,jdbcType=INTEGER},
+            resignation_date = #{resignationDate,jdbcType=DATE}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
 </mapper>

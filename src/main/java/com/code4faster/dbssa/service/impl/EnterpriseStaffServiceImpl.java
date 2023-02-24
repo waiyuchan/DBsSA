@@ -6,6 +6,7 @@ import com.code4faster.dbssa.mbg.mapper.EnterpriseStaffMapper;
 import com.code4faster.dbssa.mbg.model.EnterpriseStaff;
 import com.code4faster.dbssa.pojo.dto.EnterpriseStaffDetail;
 import com.code4faster.dbssa.pojo.dto.EnterpriseStaffItem;
+import com.code4faster.dbssa.pojo.dto.EnterpriseStaffModify;
 import com.code4faster.dbssa.pojo.dto.EnterpriseStaffRegistration;
 import com.code4faster.dbssa.service.EnterpriseStaffService;
 import com.github.pagehelper.PageHelper;
@@ -46,6 +47,11 @@ public class EnterpriseStaffServiceImpl implements EnterpriseStaffService {
     }
 
     @Override
+    public boolean isUserExisted(Integer id) {
+        return enterpriseStaffMapper.selectByPrimaryKey(id).getId() != null;
+    }
+
+    @Override
     public boolean createEnterpriseStaff(EnterpriseStaffRegistration enterpriseStaffRegistration) {
         EnterpriseStaff enterpriseStaff = ModelClassUtils.copyValueOfSameProperties(enterpriseStaffRegistration, EnterpriseStaff.class);
         String entMail = enterpriseStaff.getUsername() + ENTERPRISE_MAIL_SUFFIX;
@@ -57,13 +63,11 @@ public class EnterpriseStaffServiceImpl implements EnterpriseStaffService {
         return row > 0;
     }
 
-    // @Override
-    // public boolean updateEnterpriseStaff(EnterpriseStaff enterpriseStaffDto) {
-    //     EnterpriseStaff enterpriseStaff = new EnterpriseStaff();
-    //     // int rows = enterpriseStaffMapper.updateByPrimaryKey(enterpriseStaff);
-    //     // return rows > 0;
-    //     return false;
-    // }
+    @Override
+    public boolean updateEnterpriseStaff(EnterpriseStaffModify enterpriseStaffModify) {
+        int rows = enterpriseStaffExtendMapper.updateStaffInfo(enterpriseStaffModify);
+        return rows > 0;
+    }
 
 
     // @Override
