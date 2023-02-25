@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.code4faster.dbssa.mbg.mapper.ApartmentRoomTypeExtendMapper">
+    <resultMap id="BaseResultMap" type="com.code4faster.dbssa.mbg.model.ApartmentRoomType">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="room_type_name" jdbcType="VARCHAR" property="roomTypeName"/>
+        <result column="room_resident_limit" jdbcType="INTEGER" property="roomResidentLimit"/>
+        <result column="room_size" jdbcType="VARCHAR" property="roomSize"/>
+    </resultMap>
+    <select id="queryItemExistStatus" parameterType="com.code4faster.dbssa.mbg.model.ApartmentRoomType"
+            resultType="java.lang.Integer">
+        select count(*)
+        from apartment_room_type
+        where room_type_name = #{roomTypeName,jdbcType=VARCHAR}
+          and room_resident_limit = #{roomResidentLimit,jdbcType=INTEGER}
+          and room_size = #{roomSize,jdbcType=VARCHAR}
+    </select>
+</mapper>

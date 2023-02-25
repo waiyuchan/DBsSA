@@ -11,7 +11,7 @@
  Target Server Version : 80026
  File Encoding         : 65001
 
- Date: 20/02/2023 05:10:21
+ Date: 26/02/2023 02:19:16
 */
 
 SET NAMES utf8mb4;
@@ -38,7 +38,7 @@ CREATE TABLE `apartment` (
   `status` int NOT NULL DEFAULT '0' COMMENT '状态',
   `create_time` datetime NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='公寓信息';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='公寓信息';
 
 -- ----------------------------
 -- Table structure for apartment_asset
@@ -315,9 +315,9 @@ CREATE TABLE `apartment_room_type` (
   `id` int NOT NULL AUTO_INCREMENT COMMENT '房间类型id，自增',
   `room_type_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL COMMENT '房型名称',
   `room_resident_limit` int NOT NULL COMMENT '该类房型限住人数',
-  `room_size` varchar(0) COLLATE utf8mb4_general_ci NOT NULL COMMENT '该类房型面积',
+  `room_size` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '该类房型面积',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='公寓房型信息';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='公寓房型信息';
 
 -- ----------------------------
 -- Table structure for apartment_staff
@@ -419,7 +419,7 @@ CREATE TABLE `enterprise_staff` (
   `resignation_date` date DEFAULT NULL COMMENT '辞职日期',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '员工创建日期',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4542 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='公司员工信息';
+) ENGINE=InnoDB AUTO_INCREMENT=4548 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='公司员工信息';
 
 -- ----------------------------
 -- Table structure for movie_lib

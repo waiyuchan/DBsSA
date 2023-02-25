@@ -3,6 +3,7 @@ package com.code4faster.dbssa.controller.apartment;
 import com.code4faster.dbssa.common.api.ApiResponse;
 import com.code4faster.dbssa.common.api.ErrorCode;
 import com.code4faster.dbssa.mbg.model.Apartment;
+import com.code4faster.dbssa.mbg.model.ApartmentRoomType;
 import com.code4faster.dbssa.pojo.dto.EnterpriseStaffDetail;
 import com.code4faster.dbssa.pojo.dto.EnterpriseStaffItem;
 import com.code4faster.dbssa.pojo.dto.EnterpriseStaffModify;
@@ -20,6 +21,7 @@ public class ApartmentController {
 
     @Autowired
     ApartmentService apartmentService;
+
 
     /**
      * 创建公寓
@@ -77,7 +79,7 @@ public class ApartmentController {
      * @return 无
      */
     @PutMapping
-    public ApiResponse updateEnterpriseStaff(@RequestBody Apartment apartment) {
+    public ApiResponse updateApartmentInfo(@RequestBody Apartment apartment) {
         Integer id = apartment.getId();
         String apartmentName = apartment.getApartmentName();
         boolean isApartmentNameChanged = apartmentService.isApartmentNameChanged(id, apartmentName);
@@ -90,4 +92,15 @@ public class ApartmentController {
         boolean success = apartmentService.updateApartment(apartment);
         return (success) ? ApiResponse.success() : ApiResponse.failure(ErrorCode.RESOURCE_UPDATE_FAILED);
     }
+
+    @RequestMapping(path = "/room_type", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public ApiResponse createApartmentRoomType(@RequestBody ApartmentRoomType apartmentRoomType) {
+        boolean apartmentRoomTypeExistStatus = apartmentService.isApartmentRoomTypeExists(apartmentRoomType);
+        if (apartmentRoomTypeExistStatus) {
+            return ApiResponse.failure(ErrorCode.RESOURCE_ALREADY_EXISTS);
+        }
+        boolean success = apartmentService.createApartmentRoomType(apartmentRoomType);
+        return (success) ? ApiResponse.success() : ApiResponse.failure(ErrorCode.RESOURCE_UPDATE_FAILED);
+    }
+
 }
