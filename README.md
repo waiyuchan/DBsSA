@@ -135,6 +135,8 @@ compliant, and intelligent digital services for student apartments.
 
 ### 📱 公寓社区
 
+### 🏬 公寓商店
+
 ## 系统架构设计
 
 敬请期待
