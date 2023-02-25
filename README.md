@@ -60,6 +60,7 @@ compliant, and intelligent digital services for student apartments.
 - [ ] 公寓管理
     - [x] 公寓楼管理
         - [x] 房型管理
+          - [x] 价格管理
         - [ ] 房间管理
             - [ ] 批量数据处理，支持导入导出（ CSV / Excel / JSON ）
         - [ ] 公寓楼组织架构管理
