@@ -100,27 +100,31 @@ public class ApartmentController {
 
     // 公寓房间接口
 
-    /**
-     * 创建房间
-     *
-     * @param apartmentRoom
-     * @return
-     */
-    @PostMapping(path = "/room", consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public ApiResponse createApartmentRoom(@RequestBody ApartmentRoom apartmentRoom) {
-        return null;
-    }
+    // /**
+    //  * 创建房间
+    //  *
+    //  * @param apartmentRoom
+    //  * @return
+    //  */
+    // @PostMapping(path = "/room", consumes = {MediaType.APPLICATION_JSON_VALUE})
+    // public ApiResponse createApartmentRoom(@RequestBody ApartmentRoom apartmentRoom) {
+    //     return null;
+    // }
 
     /**
-     * 批量创建房间，支持参数请求和接口请求
+     * 批量创建房间，支持接口数据传输的模式和文件上传的模式
      *
-     * @param apartmentRooms
-     * @param file
+     * @param apartmentRoom  单个房间数据
+     * @param apartmentRooms 多个房间数据
+     * @param file           房间数据文件
      * @return
      */
     @PostMapping(path = "/room", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE})
-    public ApiResponse createApartmentRooms(@RequestBody(required = false) List<ApartmentRoom> apartmentRooms, @RequestParam(required = false) MultipartFile file) throws Exception {
-        if (apartmentRooms != null && !apartmentRooms.isEmpty()) {
+    public ApiResponse createApartmentRooms(@RequestBody(required = false) ApartmentRoom apartmentRoom, @RequestBody(required = false) List<ApartmentRoom> apartmentRooms, @RequestParam(required = false) MultipartFile file) throws Exception {
+        if (apartmentRoom != null) {
+            // 处理单个记录的请求
+            return null;
+        } else if (apartmentRooms != null && !apartmentRooms.isEmpty()) {
             // 处理多个记录的请求
             return ApiResponse.success("Create multiple records successfully");
         } else if (file != null) {
@@ -145,7 +149,6 @@ public class ApartmentController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
             return ApiResponse.success("Upload file successfully");
         } else {
             // 如果既不是多个记录的请求，也不是文件类型的请求，返回错误信息
