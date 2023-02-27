@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @SuppressWarnings("rawtypes")
 @RestController
-@RequestMapping("/api/admin/enterprise_staff")
+@RequestMapping("/api/operate/enterprise_staff")
 public class EnterpriseStaffController {
 
     @Autowired

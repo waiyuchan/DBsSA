@@ -31,7 +31,7 @@ public enum ErrorCode {
     RESOURCE_ALREADY_EXISTS(30003, "资源已存在"),
     RESOURCE_CREATE_FAILED(30004, "资源创建失败"),
 
-    SYSTEM_ERROR(40001, ""),
+    SYSTEM_ERROR(40001, "系统异常，请联系管理员"),
 
     THIRD_PARTY_ERROR(50001, ""),
     BUSINESS_ERROR(50002, ""),

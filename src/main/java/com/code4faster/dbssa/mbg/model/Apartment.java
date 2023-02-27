@@ -12,6 +12,10 @@ public class Apartment implements Serializable {
 
     private String officialPhone;
 
+    private String officialMail;
+
+    private String description;
+
     private Integer floorNumber;
 
     private Integer numberOfRooms;
@@ -66,6 +70,22 @@ public class Apartment implements Serializable {
 
     public void setOfficialPhone(String officialPhone) {
         this.officialPhone = officialPhone == null ? null : officialPhone.trim();
+    }
+
+    public String getOfficialMail() {
+        return officialMail;
+    }
+
+    public void setOfficialMail(String officialMail) {
+        this.officialMail = officialMail == null ? null : officialMail.trim();
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description == null ? null : description.trim();
     }
 
     public Integer getFloorNumber() {
@@ -166,6 +186,8 @@ public class Apartment implements Serializable {
         sb.append(", apartmentName=").append(apartmentName);
         sb.append(", address=").append(address);
         sb.append(", officialPhone=").append(officialPhone);
+        sb.append(", officialMail=").append(officialMail);
+        sb.append(", description=").append(description);
         sb.append(", floorNumber=").append(floorNumber);
         sb.append(", numberOfRooms=").append(numberOfRooms);
         sb.append(", numberOfBedrooms=").append(numberOfBedrooms);

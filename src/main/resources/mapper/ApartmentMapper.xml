@@ -6,6 +6,8 @@
     <result column="apartment_name" jdbcType="VARCHAR" property="apartmentName" />
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="official_phone" jdbcType="VARCHAR" property="officialPhone" />
+    <result column="official_mail" jdbcType="VARCHAR" property="officialMail" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="floor_number" jdbcType="INTEGER" property="floorNumber" />
     <result column="number_of_rooms" jdbcType="INTEGER" property="numberOfRooms" />
     <result column="number_of_bedrooms" jdbcType="INTEGER" property="numberOfBedrooms" />
@@ -27,23 +29,25 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into apartment (apartment_name, address, official_phone, 
-      floor_number, number_of_rooms, number_of_bedrooms, 
-      number_of_bathrooms, number_of_public_rooms, 
-      floor_space, maximum_rent, create_date, 
-      start_date, status, create_time
-      )
+      official_mail, description, floor_number, 
+      number_of_rooms, number_of_bedrooms, number_of_bathrooms, 
+      number_of_public_rooms, floor_space, maximum_rent, 
+      create_date, start_date, status, 
+      create_time)
     values (#{apartmentName,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{officialPhone,jdbcType=VARCHAR}, 
-      #{floorNumber,jdbcType=INTEGER}, #{numberOfRooms,jdbcType=INTEGER}, #{numberOfBedrooms,jdbcType=INTEGER}, 
-      #{numberOfBathrooms,jdbcType=INTEGER}, #{numberOfPublicRooms,jdbcType=INTEGER}, 
-      #{floorSpace,jdbcType=VARCHAR}, #{maximumRent,jdbcType=INTEGER}, #{createDate,jdbcType=DATE}, 
-      #{startDate,jdbcType=DATE}, #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}
-      )
+      #{officialMail,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{floorNumber,jdbcType=INTEGER}, 
+      #{numberOfRooms,jdbcType=INTEGER}, #{numberOfBedrooms,jdbcType=INTEGER}, #{numberOfBathrooms,jdbcType=INTEGER}, 
+      #{numberOfPublicRooms,jdbcType=INTEGER}, #{floorSpace,jdbcType=VARCHAR}, #{maximumRent,jdbcType=INTEGER}, 
+      #{createDate,jdbcType=DATE}, #{startDate,jdbcType=DATE}, #{status,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.code4faster.dbssa.mbg.model.Apartment">
     update apartment
     set apartment_name = #{apartmentName,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
       official_phone = #{officialPhone,jdbcType=VARCHAR},
+      official_mail = #{officialMail,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
       floor_number = #{floorNumber,jdbcType=INTEGER},
       number_of_rooms = #{numberOfRooms,jdbcType=INTEGER},
       number_of_bedrooms = #{numberOfBedrooms,jdbcType=INTEGER},
@@ -58,16 +62,16 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, apartment_name, address, official_phone, floor_number, number_of_rooms, 
-    number_of_bedrooms, number_of_bathrooms, number_of_public_rooms, floor_space, maximum_rent, 
-    create_date, start_date, status, create_time
+    select id, apartment_name, address, official_phone, official_mail, description, floor_number, 
+    number_of_rooms, number_of_bedrooms, number_of_bathrooms, number_of_public_rooms, 
+    floor_space, maximum_rent, create_date, start_date, status, create_time
     from apartment
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, apartment_name, address, official_phone, floor_number, number_of_rooms, 
-    number_of_bedrooms, number_of_bathrooms, number_of_public_rooms, floor_space, maximum_rent, 
-    create_date, start_date, status, create_time
+    select id, apartment_name, address, official_phone, official_mail, description, floor_number, 
+    number_of_rooms, number_of_bedrooms, number_of_bathrooms, number_of_public_rooms, 
+    floor_space, maximum_rent, create_date, start_date, status, create_time
     from apartment
   </select>
 </mapper>
