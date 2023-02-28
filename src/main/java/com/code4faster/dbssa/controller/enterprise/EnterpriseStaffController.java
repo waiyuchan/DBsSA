@@ -28,7 +28,7 @@ public class EnterpriseStaffController {
         if (isUserExisted) {
             return ApiResponse.failure(ErrorCode.USER_ALREADY_EXISTS);
         }
-        boolean success = enterpriseStaffService.createEnterpriseStaff(enterpriseStaffRegistration);
+        boolean success = enterpriseStaffService.save(enterpriseStaffRegistration);
         return (success) ? ApiResponse.success() : ApiResponse.failure(ErrorCode.USER_CREATE_FAILURE);
     }
 
@@ -42,7 +42,7 @@ public class EnterpriseStaffController {
     @GetMapping
     public ApiResponse getEnterpriseStaffList(@RequestParam(value = "offset", defaultValue = "0") Integer offset,
                                               @RequestParam(value = "limit", defaultValue = "10") Integer limit) {
-        PageInfo<EnterpriseStaffItem> enterpriseStaffItems = enterpriseStaffService.queryEnterpriseStaffList(offset, limit);
+        PageInfo<EnterpriseStaffItem> enterpriseStaffItems = enterpriseStaffService.listEnterpriseStaffs(offset, limit);
         QueryResultSet queryResultSet = new QueryResultSet(enterpriseStaffItems.getSize(), enterpriseStaffItems.getList());
         return ApiResponse.success(queryResultSet);
     }
@@ -55,7 +55,7 @@ public class EnterpriseStaffController {
      */
     @GetMapping("/{id}")
     public ApiResponse getEnterpriseStaffById(@PathVariable("id") Integer id) {
-        EnterpriseStaffDetail enterpriseStaff = enterpriseStaffService.queryEnterpriseStaffById(id);
+        EnterpriseStaffDetail enterpriseStaff = enterpriseStaffService.getEnterpriseStaffById(id);
         return ApiResponse.success(enterpriseStaff);
     }
 

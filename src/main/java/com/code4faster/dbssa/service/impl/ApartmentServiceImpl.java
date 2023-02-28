@@ -32,7 +32,7 @@ public class ApartmentServiceImpl implements ApartmentService {
 
 
     @Override
-    public boolean createApartment(Apartment apartment) {
+    public boolean saveApartment(Apartment apartment) {
         int row = apartmentMapper.insert(apartment);
         return row > 0;
     }
@@ -50,14 +50,14 @@ public class ApartmentServiceImpl implements ApartmentService {
     }
 
     @Override
-    public PageInfo<Apartment> queryApartmentList(Integer pageNum, Integer pageSize) {
+    public PageInfo<Apartment> listApartments(Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<Apartment> apartmentList = apartmentExtendMapper.queryApartmentList();
         return new PageInfo<>(apartmentList);
     }
 
     @Override
-    public Apartment queryById(Integer id) {
+    public Apartment getApartmentById(Integer id) {
         return apartmentMapper.selectByPrimaryKey(id);
     }
 
@@ -74,7 +74,7 @@ public class ApartmentServiceImpl implements ApartmentService {
     }
 
     @Override
-    public boolean createApartmentRoomType(ApartmentRoomType apartmentRoomType) {
+    public boolean saveApartmentRoomType(ApartmentRoomType apartmentRoomType) {
         int rows = apartmentRoomTypeMapper.insert(apartmentRoomType);
         return rows > 0;
     }

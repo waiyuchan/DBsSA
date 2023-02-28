@@ -42,7 +42,7 @@ public class ApartmentController {
         if (isApartmentExisted) {
             return ApiResponse.failure(ErrorCode.RESOURCE_ALREADY_EXISTS);
         }
-        boolean success = apartmentService.createApartment(apartment);
+        boolean success = apartmentService.saveApartment(apartment);
         return (success) ? ApiResponse.success() : ApiResponse.failure(ErrorCode.RESOURCE_CREATE_FAILED);
     }
 
@@ -56,7 +56,7 @@ public class ApartmentController {
     @GetMapping
     public ApiResponse getApartmentList(@RequestParam(value = "offset", defaultValue = "0") Integer offset,
                                         @RequestParam(value = "limit", defaultValue = "10") Integer limit) {
-        PageInfo<Apartment> apartmentPageInfo = apartmentService.queryApartmentList(offset, limit);
+        PageInfo<Apartment> apartmentPageInfo = apartmentService.listApartments(offset, limit);
         QueryResultSet queryResultSet = new QueryResultSet(apartmentPageInfo.getSize(), apartmentPageInfo.getList());
         return ApiResponse.success(queryResultSet);
     }
@@ -69,7 +69,7 @@ public class ApartmentController {
      */
     @GetMapping("/{id}")
     public ApiResponse getApartmentById(@PathVariable("id") Integer id) {
-        Apartment apartment = apartmentService.queryById(id);
+        Apartment apartment = apartmentService.getApartmentById(id);
         System.out.println(apartment);
         if (apartment == null) {
             return ApiResponse.failure(ErrorCode.RESOURCE_NOT_FOUND);
@@ -171,7 +171,7 @@ public class ApartmentController {
         if (apartmentRoomTypeExistStatus) {
             return ApiResponse.failure(ErrorCode.RESOURCE_ALREADY_EXISTS);
         }
-        boolean success = apartmentService.createApartmentRoomType(apartmentRoomType);
+        boolean success = apartmentService.saveApartmentRoomType(apartmentRoomType);
         return (success) ? ApiResponse.success() : ApiResponse.failure(ErrorCode.RESOURCE_UPDATE_FAILED);
     }
 

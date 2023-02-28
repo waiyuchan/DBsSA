@@ -29,13 +29,13 @@ public class EnterpriseStaffServiceImpl implements EnterpriseStaffService {
     EnterpriseStaffExtendMapper enterpriseStaffExtendMapper;
 
     @Override
-    public EnterpriseStaffDetail queryEnterpriseStaffById(Integer id) {
+    public EnterpriseStaffDetail getEnterpriseStaffById(Integer id) {
         EnterpriseStaff enterpriseStaff = enterpriseStaffMapper.selectByPrimaryKey(id);
         return ModelClassUtils.copyValueOfSameProperties(enterpriseStaff, EnterpriseStaffDetail.class);
     }
 
     @Override
-    public PageInfo<EnterpriseStaffItem> queryEnterpriseStaffList(Integer pageNum, Integer pageSize) {
+    public PageInfo<EnterpriseStaffItem> listEnterpriseStaffs(Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<EnterpriseStaffItem> enterpriseStaffList = enterpriseStaffExtendMapper.queryStaffList();
         return new PageInfo<>(enterpriseStaffList);
@@ -58,7 +58,7 @@ public class EnterpriseStaffServiceImpl implements EnterpriseStaffService {
     }
 
     @Override
-    public boolean createEnterpriseStaff(EnterpriseStaffRegistration enterpriseStaffRegistration) {
+    public boolean save(EnterpriseStaffRegistration enterpriseStaffRegistration) {
         EnterpriseStaff enterpriseStaff = ModelClassUtils.copyValueOfSameProperties(enterpriseStaffRegistration, EnterpriseStaff.class);
         String entMail = enterpriseStaff.getUsername() + ENTERPRISE_MAIL_SUFFIX;
         enterpriseStaff.setId(DEFAULT_INITIAL_VALUE);

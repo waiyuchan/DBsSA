@@ -6,21 +6,20 @@ import com.github.pagehelper.PageInfo;
 
 public interface ApartmentService {
 
-    boolean createApartment(Apartment apartment);
+    boolean saveApartment(Apartment apartment);
 
     boolean isApartmentExists(String apartmentName);
 
     boolean isApartmentNameChanged(Integer id, String apartmentName);
 
-    PageInfo<Apartment> queryApartmentList(Integer offset, Integer limit);
+    Apartment getApartmentById(Integer id);
 
-    Apartment queryById(Integer id);
+    PageInfo<Apartment> listApartments(Integer offset, Integer limit);
 
     boolean updateApartment(Apartment apartment);
 
     boolean isApartmentRoomTypeExists(ApartmentRoomType apartmentRoomType);
 
-    boolean createApartmentRoomType(ApartmentRoomType apartmentRoomType);
-
+    boolean saveApartmentRoomType(ApartmentRoomType apartmentRoomType);
 
 }

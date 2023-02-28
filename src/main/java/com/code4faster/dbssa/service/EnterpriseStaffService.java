@@ -8,9 +8,9 @@ import com.github.pagehelper.PageInfo;
 
 public interface EnterpriseStaffService {
 
-    EnterpriseStaffDetail queryEnterpriseStaffById(Integer id);
+    EnterpriseStaffDetail getEnterpriseStaffById(Integer id);
 
-    PageInfo<EnterpriseStaffItem> queryEnterpriseStaffList(Integer offset, Integer limit);
+    PageInfo<EnterpriseStaffItem> listEnterpriseStaffs(Integer offset, Integer limit);
 
     boolean isUserExisted(String username);
 
@@ -18,7 +18,7 @@ public interface EnterpriseStaffService {
 
     boolean isUsernameChanged(Integer id, String username);
 
-    boolean createEnterpriseStaff(EnterpriseStaffRegistration enterpriseStaffRegistration);
+    boolean save(EnterpriseStaffRegistration enterpriseStaffRegistration);
 
     boolean updateEnterpriseStaff(EnterpriseStaffModify enterpriseStaffModify);
 
