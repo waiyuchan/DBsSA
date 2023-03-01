@@ -2,10 +2,12 @@ server:
   port: 8999
 
 spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/dbssa
-    username: root
-    password: Test@1234
+  profiles:
+    active: local
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/dbssa
+#    username: root
+#    password: Test@1234
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
