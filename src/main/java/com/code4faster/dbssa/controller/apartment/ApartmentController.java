@@ -117,18 +117,18 @@ public class ApartmentController {
      * @param apartmentRoom  单个房间数据
      * @param apartmentRooms 多个房间数据
      * @param file           房间数据文件
-     * @return
+     * @return 创建结果
      */
     @PostMapping(path = "/room", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE})
     public ApiResponse createApartmentRooms(@RequestBody(required = false) ApartmentRoom apartmentRoom, @RequestBody(required = false) List<ApartmentRoom> apartmentRooms, @RequestParam(required = false) MultipartFile file) throws Exception {
         if (apartmentRoom != null) {
-            // 处理单个记录的请求
+            // TODO: 处理单个记录的请求
             return null;
         } else if (apartmentRooms != null && !apartmentRooms.isEmpty()) {
-            // 处理多个记录的请求
+            // TODO: 处理多个记录的请求
             return ApiResponse.success("Create multiple records successfully");
         } else if (file != null) {
-            // 处理文件类型的请求
+            // TODO: 处理文件类型的请求
 
             // 获取文件类型和输入流
             String contentType = file.getContentType();
