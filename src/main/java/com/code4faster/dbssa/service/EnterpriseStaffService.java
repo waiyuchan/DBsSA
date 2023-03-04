@@ -12,9 +12,9 @@ public interface EnterpriseStaffService {
 
     PageInfo<EnterpriseStaffItem> listEnterpriseStaffs(Integer offset, Integer limit);
 
-    boolean isUserExisted(String username);
+    boolean isUserExists(String username);
 
-    boolean isUserExisted(Integer id);
+    boolean isUserExists(Integer id);
 
     boolean isUsernameChanged(Integer id, String username);
 

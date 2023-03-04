@@ -37,9 +37,7 @@ public class ApartmentController {
     @PostMapping
     public ApiResponse createApartment(@RequestBody Apartment apartment) {
         String apartmentName = apartment.getApartmentName();
-        boolean isApartmentExisted = apartmentService.isApartmentExists(apartmentName);
-        System.out.println(isApartmentExisted);
-        if (isApartmentExisted) {
+        if (apartmentService.isApartmentExists(apartmentName)) {
             return ApiResponse.failure(ErrorCode.RESOURCE_ALREADY_EXISTS);
         }
         boolean success = apartmentService.saveApartment(apartment);
@@ -87,10 +85,8 @@ public class ApartmentController {
     public ApiResponse updateApartmentInfo(@RequestBody Apartment apartment) {
         Integer id = apartment.getId();
         String apartmentName = apartment.getApartmentName();
-        boolean isApartmentNameChanged = apartmentService.isApartmentNameChanged(id, apartmentName);
-        if (!isApartmentNameChanged) {
-            boolean isApartmentExisted = apartmentService.isApartmentExists(apartmentName);
-            if (isApartmentExisted) {
+        if (!apartmentService.isApartmentNameChanged(id, apartmentName)) {
+            if (apartmentService.isApartmentExists(apartmentName)) {
                 return ApiResponse.failure(ErrorCode.RESOURCE_ALREADY_EXISTS);
             }
         }
@@ -100,19 +96,8 @@ public class ApartmentController {
 
     // 公寓房间接口
 
-    // /**
-    //  * 创建房间
-    //  *
-    //  * @param apartmentRoom
-    //  * @return
-    //  */
-    // @PostMapping(path = "/room", consumes = {MediaType.APPLICATION_JSON_VALUE})
-    // public ApiResponse createApartmentRoom(@RequestBody ApartmentRoom apartmentRoom) {
-    //     return null;
-    // }
-
     /**
-     * 批量创建房间，支持接口数据传输的模式和文件上传的模式
+     * 创建房间接口，支持单条数据或批量数据创建，接口接受内容包括数据传输和文件上传
      *
      * @param apartmentRoom  单个房间数据
      * @param apartmentRooms 多个房间数据
@@ -122,10 +107,19 @@ public class ApartmentController {
     @PostMapping(path = "/room", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE})
     public ApiResponse createApartmentRooms(@RequestBody(required = false) ApartmentRoom apartmentRoom, @RequestBody(required = false) List<ApartmentRoom> apartmentRooms, @RequestParam(required = false) MultipartFile file) throws Exception {
         if (apartmentRoom != null) {
-            // TODO: 处理单个记录的请求
-            return null;
+            // 处理单个记录的请求
+            if (!apartmentService.isApartmentRoomExists(apartmentRoom)) {
+                if (apartmentService.saveApartmentRoom(apartmentRoom)) {
+                    return ApiResponse.success();
+                } else {
+                    return ApiResponse.failure(ErrorCode.USER_CREATE_FAILURE);
+                }
+            } else {
+                return ApiResponse.failure(ErrorCode.RESOURCE_ALREADY_EXISTS);
+            }
         } else if (apartmentRooms != null && !apartmentRooms.isEmpty()) {
             // TODO: 处理多个记录的请求
+            apartmentService.saveApartmentRoomWithBatchData(apartmentRooms);
             return ApiResponse.success("Create multiple records successfully");
         } else if (file != null) {
             // TODO: 处理文件类型的请求
@@ -135,6 +129,7 @@ public class ApartmentController {
             try {
                 InputStream inputStream = file.getInputStream();
                 // 根据文件类型，选择解析器解析文件
+                apartmentService.saveApartmentRoomWithBatchData(apartmentRooms);
                 if (MediaType.APPLICATION_JSON_VALUE.equals(contentType)) {
                     // TODO: 处理JSON文件，批量创建房间
                 } else if (MediaType.APPLICATION_XML_VALUE.equals(contentType)) {
@@ -152,7 +147,7 @@ public class ApartmentController {
             return ApiResponse.success("Upload file successfully");
         } else {
             // 如果既不是多个记录的请求，也不是文件类型的请求，返回错误信息
-            return ApiResponse.failure(ErrorCode.SYSTEM_ERROR);
+            return ApiResponse.failure(ErrorCode.INVALID_PARAMETERS_TYPE);
         }
     }
 
@@ -167,8 +162,8 @@ public class ApartmentController {
      */
     @PostMapping(path = "/room_type", produces = "application/json;charset=UTF-8")
     public ApiResponse createApartmentRoomType(@RequestBody ApartmentRoomType apartmentRoomType) {
-        boolean apartmentRoomTypeExistStatus = apartmentService.isApartmentRoomTypeExists(apartmentRoomType);
-        if (apartmentRoomTypeExistStatus) {
+        boolean isApartmentRoomTypeExists = apartmentService.isApartmentRoomTypeExists(apartmentRoomType);
+        if (isApartmentRoomTypeExists) {
             return ApiResponse.failure(ErrorCode.RESOURCE_ALREADY_EXISTS);
         }
         boolean success = apartmentService.saveApartmentRoomType(apartmentRoomType);
@@ -185,7 +180,6 @@ public class ApartmentController {
     @PostMapping(path = "/room_type/pricing", produces = "application/json;charset=UTF-8")
     public ApiResponse bindRoomTypeToApartmentAndDefinePrice(@RequestBody ApartmentRoomPrice apartmentRoomPrice) {
         // TODO: 接口需要实现绑定方法，并在完成绑定后返回完整的 `公寓->房型->价格` 信息
-
         return null;
     }
 

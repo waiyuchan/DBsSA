@@ -1,8 +1,11 @@
 package com.code4faster.dbssa.service;
 
 import com.code4faster.dbssa.mbg.model.Apartment;
+import com.code4faster.dbssa.mbg.model.ApartmentRoom;
 import com.code4faster.dbssa.mbg.model.ApartmentRoomType;
 import com.github.pagehelper.PageInfo;
+
+import java.util.List;
 
 public interface ApartmentService {
 
@@ -21,5 +24,11 @@ public interface ApartmentService {
     boolean isApartmentRoomTypeExists(ApartmentRoomType apartmentRoomType);
 
     boolean saveApartmentRoomType(ApartmentRoomType apartmentRoomType);
+
+    boolean isApartmentRoomExists(ApartmentRoom apartmentRoom);
+
+    boolean saveApartmentRoom(ApartmentRoom apartmentRoom);
+
+    boolean saveApartmentRoomWithBatchData(List<ApartmentRoom> apartmentRooms);
 
 }

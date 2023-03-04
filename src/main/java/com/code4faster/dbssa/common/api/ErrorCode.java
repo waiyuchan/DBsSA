@@ -14,6 +14,7 @@ public enum ErrorCode {
     USER_DISABLED(10008, ""),
     USER_CREATE_FAILURE(10009, "用户创建失败"),
     PASSWORD_MISMATCH(10010, ""),
+    INVALID_PARAMETERS_TYPE(10011, "无效的参数类型"),
 
     EMAIL_ALREADY_EXISTS(11001, ""),
     EMAIL_NOT_FOUND(11002, ""),

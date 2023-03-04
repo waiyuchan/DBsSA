@@ -42,12 +42,12 @@ public class EnterpriseStaffServiceImpl implements EnterpriseStaffService {
     }
 
     @Override
-    public boolean isUserExisted(String username) {
+    public boolean isUserExists(String username) {
         return enterpriseStaffExtendMapper.queryByUsername(username) > 0;
     }
 
     @Override
-    public boolean isUserExisted(Integer id) {
+    public boolean isUserExists(Integer id) {
         return enterpriseStaffMapper.selectByPrimaryKey(id).getId() != null;
     }
 

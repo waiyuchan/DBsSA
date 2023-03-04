@@ -1,15 +1,12 @@
 package com.code4faster.dbssa.service.impl;
 
-import com.code4faster.dbssa.mbg.mapper.ApartmentExtendMapper;
-import com.code4faster.dbssa.mbg.mapper.ApartmentMapper;
-import com.code4faster.dbssa.mbg.mapper.ApartmentRoomTypeExtendMapper;
-import com.code4faster.dbssa.mbg.mapper.ApartmentRoomTypeMapper;
+import com.code4faster.dbssa.mbg.mapper.*;
 import com.code4faster.dbssa.mbg.model.Apartment;
+import com.code4faster.dbssa.mbg.model.ApartmentRoom;
 import com.code4faster.dbssa.mbg.model.ApartmentRoomType;
 import com.code4faster.dbssa.service.ApartmentService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -30,6 +27,11 @@ public class ApartmentServiceImpl implements ApartmentService {
     @Resource
     ApartmentRoomTypeExtendMapper apartmentRoomTypeExtendMapper;
 
+    @Resource
+    ApartmentRoomMapper apartmentRoomMapper;
+
+    @Resource
+    ApartmentRoomExtendMapper apartmentRoomExtendMapper;
 
     @Override
     public boolean saveApartment(Apartment apartment) {
@@ -77,6 +79,28 @@ public class ApartmentServiceImpl implements ApartmentService {
     public boolean saveApartmentRoomType(ApartmentRoomType apartmentRoomType) {
         int rows = apartmentRoomTypeMapper.insert(apartmentRoomType);
         return rows > 0;
+    }
+
+    @Override
+    public boolean isApartmentRoomExists(ApartmentRoom apartmentRoom) {
+        int rows = apartmentRoomExtendMapper.queryExistsRecord(apartmentRoom);
+        return rows > 0;
+    }
+
+    @Override
+    public boolean saveApartmentRoom(ApartmentRoom apartmentRoom) {
+        return false;
+    }
+
+    /**
+     * 批量数据&文件解析后的批量数据
+     *
+     * @param apartmentRooms 批量数据
+     * @return 批量数据
+     */
+    @Override
+    public boolean saveApartmentRoomWithBatchData(List<ApartmentRoom> apartmentRooms) {
+        return false;
     }
 
 }

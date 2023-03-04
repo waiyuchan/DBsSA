@@ -24,8 +24,7 @@ public class EnterpriseStaffController {
     @PostMapping
     public ApiResponse createEnterpriseStaff(@RequestBody EnterpriseStaffRegistration enterpriseStaffRegistration) {
         String username = enterpriseStaffRegistration.getUsername();
-        boolean isUserExisted = enterpriseStaffService.isUserExisted(username);
-        if (isUserExisted) {
+        if (enterpriseStaffService.isUserExists(username)) {
             return ApiResponse.failure(ErrorCode.USER_ALREADY_EXISTS);
         }
         boolean success = enterpriseStaffService.save(enterpriseStaffRegistration);
@@ -69,10 +68,8 @@ public class EnterpriseStaffController {
     public ApiResponse updateEnterpriseStaff(@RequestBody EnterpriseStaffModify enterpriseStaffModify) {
         Integer id = enterpriseStaffModify.getId();
         String username = enterpriseStaffModify.getUsername();
-        boolean isUsernameChanged = enterpriseStaffService.isUsernameChanged(id, username);
-        if (!isUsernameChanged) {
-            boolean isUserExisted = enterpriseStaffService.isUserExisted(username);
-            if (isUserExisted) {
+        if (!enterpriseStaffService.isUsernameChanged(id, username)) {
+            if (enterpriseStaffService.isUserExists(username)) {
                 return ApiResponse.failure(ErrorCode.USER_ALREADY_EXISTS);
             }
         }
