@@ -14,7 +14,7 @@
         select count(*)
         from apartment_room
         where apartment_id = #{apartmentId,jdbcType=INTEGER}
-          and room_type_id = #{roomTypeId,,jdbcType=INTEGER}
+          and room_type_id = #{roomTypeId,jdbcType=INTEGER}
           and room_number = #{roomNumber,jdbcType=VARCHAR}
           and floor = #{floor,jdbcType=VARCHAR}
           and status = 0

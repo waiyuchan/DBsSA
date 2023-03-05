@@ -22,5 +22,19 @@ public class FileProcessingUtils {
         return bufferedReader;
     }
 
+    /**
+     * 获取文件的扩展名
+     *
+     * @param fileName 拓展名
+     * @return 文件扩展名
+     */
+    public String getFileExtension(String fileName) {
+        int lastDotIndex = fileName.lastIndexOf(".");
+        if (lastDotIndex == -1) {
+            return "";
+        }
+        return fileName.substring(lastDotIndex + 1);
+    }
+
 
 }

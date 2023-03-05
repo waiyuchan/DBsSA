@@ -104,8 +104,9 @@ public class ApartmentController {
      * @param file           房间数据文件
      * @return 创建结果
      */
-    @PostMapping(path = "/room", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE})
+    @PostMapping(path = "/room")
     public ApiResponse createApartmentRooms(@RequestBody(required = false) ApartmentRoom apartmentRoom, @RequestBody(required = false) List<ApartmentRoom> apartmentRooms, @RequestParam(required = false) MultipartFile file) throws Exception {
+        System.out.println(file.getContentType());
         if (apartmentRoom != null) {
             // 处理单个记录的请求
             if (!apartmentService.isApartmentRoomExists(apartmentRoom)) {
