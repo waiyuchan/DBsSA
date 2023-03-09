@@ -95,61 +95,67 @@ public class ApartmentController {
     }
 
     // 公寓房间接口
+    @PostMapping(path = "/room")
+    public ApiResponse createApartmentRooms(@RequestBody ApartmentRoom apartmentRoom) {
+        if (!apartmentService.isApartmentRoomExists(apartmentRoom)) {
+            if (apartmentService.saveApartmentRoom(apartmentRoom)) {
+                return ApiResponse.success();
+            } else {
+                return ApiResponse.failure(ErrorCode.USER_CREATE_FAILURE);
+            }
+        } else {
+            return ApiResponse.failure(ErrorCode.RESOURCE_ALREADY_EXISTS);
+        }
+    }
+
+    @PostMapping(path = "/room/batch")
+    public ApiResponse createApartmentRoomsByBatch(@RequestBody List<ApartmentRoom> apartmentRooms) {
+        if (!apartmentService.isApartmentRoomExists(apartmentRooms.get(0))) {
+            if (apartmentService.saveApartmentRoom(apartmentRooms.get(0))) {
+                return ApiResponse.success();
+            } else {
+                return ApiResponse.failure(ErrorCode.USER_CREATE_FAILURE);
+            }
+        } else {
+            return ApiResponse.failure(ErrorCode.RESOURCE_ALREADY_EXISTS);
+        }
+    }
 
     /**
      * 创建房间接口，支持单条数据或批量数据创建，接口接受内容包括数据传输和文件上传
+     * <p>
+     * // * @param apartmentRoom  单个房间数据
+     * // * @param apartmentRooms 多个房间数据
      *
-     * @param apartmentRoom  单个房间数据
-     * @param apartmentRooms 多个房间数据
-     * @param file           房间数据文件
+     * @param file 房间数据文件
      * @return 创建结果
      */
-    @PostMapping(path = "/room")
-    public ApiResponse createApartmentRooms(@RequestBody(required = false) ApartmentRoom apartmentRoom, @RequestBody(required = false) List<ApartmentRoom> apartmentRooms, @RequestParam(required = false) MultipartFile file) throws Exception {
-        System.out.println(file.getContentType());
-        if (apartmentRoom != null) {
-            // 处理单个记录的请求
-            if (!apartmentService.isApartmentRoomExists(apartmentRoom)) {
-                if (apartmentService.saveApartmentRoom(apartmentRoom)) {
-                    return ApiResponse.success();
-                } else {
-                    return ApiResponse.failure(ErrorCode.USER_CREATE_FAILURE);
-                }
-            } else {
-                return ApiResponse.failure(ErrorCode.RESOURCE_ALREADY_EXISTS);
-            }
-        } else if (apartmentRooms != null && !apartmentRooms.isEmpty()) {
-            // TODO: 处理多个记录的请求
-            apartmentService.saveApartmentRoomWithBatchData(apartmentRooms);
-            return ApiResponse.success("Create multiple records successfully");
-        } else if (file != null) {
-            // TODO: 处理文件类型的请求
+    @PostMapping(path = "/room/upload")
+    public ApiResponse createApartmentRoomsByUploadFile(@RequestParam(value = "file") MultipartFile file) {
+        // 获取文件类型和输入流
+        String contentType = file.getContentType();
 
-            // 获取文件类型和输入流
-            String contentType = file.getContentType();
-            try {
-                InputStream inputStream = file.getInputStream();
-                // 根据文件类型，选择解析器解析文件
-                apartmentService.saveApartmentRoomWithBatchData(apartmentRooms);
-                if (MediaType.APPLICATION_JSON_VALUE.equals(contentType)) {
-                    // TODO: 处理JSON文件，批量创建房间
-                } else if (MediaType.APPLICATION_XML_VALUE.equals(contentType)) {
-                    // TODO: 处理XML文件，批量创建房间
-                } else if (MediaType.TEXT_PLAIN_VALUE.equals(contentType)) {
-                    // TODO: 处理CSV文件，批量创建房间
-                } else {
-                    // 不支持的文件类型
-                    // throw new UnsupportedMediaTypeException();
-                    throw new Exception();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+        try {
+            InputStream inputStream = file.getInputStream();
+            // 根据文件类型，选择解析器解析文件
+            // apartmentService.saveApartmentRoomWithBatchData(apartmentRooms);
+            if (MediaType.APPLICATION_JSON_VALUE.equals(contentType)) {
+                // TODO: 处理JSON文件，批量创建房间
+            } else if (MediaType.APPLICATION_XML_VALUE.equals(contentType)) {
+                // TODO: 处理XML文件，批量创建房间
+            } else if (MediaType.TEXT_PLAIN_VALUE.equals(contentType)) {
+                // TODO: 处理CSV文件，批量创建房间
+                System.out.println(file.getContentType());
+            } else {
+                // 不支持的文件类型
+                // throw new UnsupportedMediaTypeException();
+                throw new Exception();
             }
-            return ApiResponse.success("Upload file successfully");
-        } else {
-            // 如果既不是多个记录的请求，也不是文件类型的请求，返回错误信息
-            return ApiResponse.failure(ErrorCode.INVALID_PARAMETERS_TYPE);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        return ApiResponse.success("Upload file successfully");
+
     }
 
 
