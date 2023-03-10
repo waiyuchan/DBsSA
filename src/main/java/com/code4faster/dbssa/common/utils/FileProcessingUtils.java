@@ -28,7 +28,7 @@ public class FileProcessingUtils {
      * @param fileName 拓展名
      * @return 文件扩展名
      */
-    public String getFileExtension(String fileName) {
+    public static String getFileExtension(String fileName) {
         int lastDotIndex = fileName.lastIndexOf(".");
         if (lastDotIndex == -1) {
             return "";

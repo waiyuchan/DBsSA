@@ -2,6 +2,7 @@ package com.code4faster.dbssa.controller.apartment;
 
 import com.code4faster.dbssa.common.api.ApiResponse;
 import com.code4faster.dbssa.common.api.ErrorCode;
+import com.code4faster.dbssa.common.utils.FileProcessingUtils;
 import com.code4faster.dbssa.mbg.model.Apartment;
 import com.code4faster.dbssa.mbg.model.ApartmentRoom;
 import com.code4faster.dbssa.mbg.model.ApartmentRoomPrice;
@@ -96,7 +97,7 @@ public class ApartmentController {
 
     // 公寓房间接口
     @PostMapping(path = "/room")
-    public ApiResponse createApartmentRooms(@RequestBody ApartmentRoom apartmentRoom) {
+    public ApiResponse createSingleApartmentRoom(@RequestBody ApartmentRoom apartmentRoom) {
         if (!apartmentService.isApartmentRoomExists(apartmentRoom)) {
             if (apartmentService.saveApartmentRoom(apartmentRoom)) {
                 return ApiResponse.success();
@@ -109,7 +110,7 @@ public class ApartmentController {
     }
 
     @PostMapping(path = "/room/batch")
-    public ApiResponse createApartmentRoomsByBatch(@RequestBody List<ApartmentRoom> apartmentRooms) {
+    public ApiResponse createBatchApartmentRooms(@RequestBody List<ApartmentRoom> apartmentRooms) {
         if (!apartmentService.isApartmentRoomExists(apartmentRooms.get(0))) {
             if (apartmentService.saveApartmentRoom(apartmentRooms.get(0))) {
                 return ApiResponse.success();
@@ -131,26 +132,34 @@ public class ApartmentController {
      * @return 创建结果
      */
     @PostMapping(path = "/room/upload")
-    public ApiResponse createApartmentRoomsByUploadFile(@RequestParam(value = "file") MultipartFile file) {
+    public ApiResponse createBatchApartmentRoomsByUploadFile(@RequestParam(value = "file") MultipartFile file) {
         // 获取文件类型和输入流
+        String filename = file.getOriginalFilename();
+        System.out.println(filename);
+        if (filename != null) {
+            String fileExtension = FileProcessingUtils.getFileExtension(filename);
+            System.out.println(fileExtension);
+        } else {
+            return ApiResponse.failure(ErrorCode.FILE_IS_REQUIRED);
+        }
         String contentType = file.getContentType();
-
+        System.out.println(contentType);
         try {
             InputStream inputStream = file.getInputStream();
             // 根据文件类型，选择解析器解析文件
             // apartmentService.saveApartmentRoomWithBatchData(apartmentRooms);
-            if (MediaType.APPLICATION_JSON_VALUE.equals(contentType)) {
-                // TODO: 处理JSON文件，批量创建房间
-            } else if (MediaType.APPLICATION_XML_VALUE.equals(contentType)) {
-                // TODO: 处理XML文件，批量创建房间
-            } else if (MediaType.TEXT_PLAIN_VALUE.equals(contentType)) {
-                // TODO: 处理CSV文件，批量创建房间
-                System.out.println(file.getContentType());
-            } else {
-                // 不支持的文件类型
-                // throw new UnsupportedMediaTypeException();
-                throw new Exception();
-            }
+            // if (MediaType.APPLICATION_JSON_VALUE.equals(contentType)) {
+            //     // TODO: 处理JSON文件，批量创建房间
+            // } else if (MediaType.APPLICATION_XML_VALUE.equals(contentType)) {
+            //     // TODO: 处理XML文件，批量创建房间
+            // } else if (MediaType.TEXT_PLAIN_VALUE.equals(contentType)) {
+            //     // TODO: 处理CSV文件，批量创建房间
+            //     System.out.println(file.getContentType());
+            // } else {
+            //     // 不支持的文件类型
+            //     // throw new UnsupportedMediaTypeException();
+            //     throw new Exception();
+            // }
         } catch (Exception e) {
             e.printStackTrace();
         }
