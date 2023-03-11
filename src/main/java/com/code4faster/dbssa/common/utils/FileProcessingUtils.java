@@ -1,5 +1,7 @@
 package com.code4faster.dbssa.common.utils;
 
+import com.code4faster.dbssa.common.api.FileType;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -34,6 +36,10 @@ public class FileProcessingUtils {
             return "";
         }
         return fileName.substring(lastDotIndex + 1);
+    }
+
+    public static boolean isFileTypeTrue(String fileExtension, FileType fileType) {
+        return fileExtension.equals(fileType.getFileType());
     }
 
 

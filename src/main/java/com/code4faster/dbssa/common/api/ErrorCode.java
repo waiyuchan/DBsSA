@@ -33,7 +33,6 @@ public enum ErrorCode {
     RESOURCE_CREATE_FAILED(30004, "资源创建失败"),
 
     SYSTEM_ERROR(40001, "系统异常，请联系管理员"),
-    FILE_IS_REQUIRED(40002, "未选择文件上传"),
 
     THIRD_PARTY_ERROR(50001, ""),
     BUSINESS_ERROR(50002, ""),
@@ -41,7 +40,9 @@ public enum ErrorCode {
     NETWORK_ERROR(50004, ""),
     METHOD_NOT_ALLOWED(50005, ""),
     SERVICE_UNAVAILABLE(50006, ""),
-    REQUEST_TIMEOUT(50007, "");
+    REQUEST_TIMEOUT(50007, ""),
+
+    FILE_IS_REQUIRED(60002, "未识别到文件，请检查是否上传成功");
 
 
     private long code;

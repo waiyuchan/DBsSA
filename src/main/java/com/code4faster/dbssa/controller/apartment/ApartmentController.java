@@ -2,6 +2,7 @@ package com.code4faster.dbssa.controller.apartment;
 
 import com.code4faster.dbssa.common.api.ApiResponse;
 import com.code4faster.dbssa.common.api.ErrorCode;
+import com.code4faster.dbssa.common.api.FileType;
 import com.code4faster.dbssa.common.utils.FileProcessingUtils;
 import com.code4faster.dbssa.mbg.model.Apartment;
 import com.code4faster.dbssa.mbg.model.ApartmentRoom;
@@ -135,36 +136,36 @@ public class ApartmentController {
     public ApiResponse createBatchApartmentRoomsByUploadFile(@RequestParam(value = "file") MultipartFile file) {
         // 获取文件类型和输入流
         String filename = file.getOriginalFilename();
-        System.out.println(filename);
-        if (filename != null) {
+        if (filename != null && !filename.equals("")) {
             String fileExtension = FileProcessingUtils.getFileExtension(filename);
             System.out.println(fileExtension);
+            try {
+                InputStream inputStream = file.getInputStream();
+                // 根据文件类型，选择解析器解析文件
+                if (FileProcessingUtils.isFileTypeTrue(fileExtension, FileType.JSON_FILE)) {
+                    // 处理JSON文件，批量创建房间
+                    System.out.println("The file is a json file.");
+                    System.out.println(filename);
+                } else if (FileProcessingUtils.isFileTypeTrue(fileExtension, FileType.EXCEL_FILE)) {
+                    // TODO: 处理XML文件，批量创建房间
+                    System.out.println("The file is a excel file.");
+                } else if (FileProcessingUtils.isFileTypeTrue(fileExtension, FileType.CSV_FILE)) {
+                    // TODO: 处理CSV文件，批量创建房间
+                    System.out.println("The file is a csv file.");
+                } else {
+                    // 不支持的文件类型
+                    // throw new UnsupportedFileTypeException();
+                    throw new Exception();
+                }
+                // apartmentService.saveApartmentRoomWithBatchData(apartmentRooms);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return ApiResponse.success("Upload file successfully");
         } else {
             return ApiResponse.failure(ErrorCode.FILE_IS_REQUIRED);
         }
-        String contentType = file.getContentType();
-        System.out.println(contentType);
-        try {
-            InputStream inputStream = file.getInputStream();
-            // 根据文件类型，选择解析器解析文件
-            // apartmentService.saveApartmentRoomWithBatchData(apartmentRooms);
-            // if (MediaType.APPLICATION_JSON_VALUE.equals(contentType)) {
-            //     // TODO: 处理JSON文件，批量创建房间
-            // } else if (MediaType.APPLICATION_XML_VALUE.equals(contentType)) {
-            //     // TODO: 处理XML文件，批量创建房间
-            // } else if (MediaType.TEXT_PLAIN_VALUE.equals(contentType)) {
-            //     // TODO: 处理CSV文件，批量创建房间
-            //     System.out.println(file.getContentType());
-            // } else {
-            //     // 不支持的文件类型
-            //     // throw new UnsupportedMediaTypeException();
-            //     throw new Exception();
-            // }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return ApiResponse.success("Upload file successfully");
-
     }
 
 
