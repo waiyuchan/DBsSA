@@ -3,6 +3,7 @@ package com.code4faster.dbssa.controller.apartment;
 import com.code4faster.dbssa.common.api.ApiResponse;
 import com.code4faster.dbssa.common.api.ErrorCode;
 import com.code4faster.dbssa.common.api.FileType;
+import com.code4faster.dbssa.common.exception.UnsupportedFileTypeException;
 import com.code4faster.dbssa.common.utils.FileProcessingUtils;
 import com.code4faster.dbssa.mbg.model.Apartment;
 import com.code4faster.dbssa.mbg.model.ApartmentRoom;
@@ -154,8 +155,8 @@ public class ApartmentController {
                     System.out.println("The file is a csv file.");
                 } else {
                     // 不支持的文件类型
-                    // throw new UnsupportedFileTypeException();
-                    throw new Exception();
+                    throw new UnsupportedFileTypeException("Unsupported File Type");
+                    // throw new Exception();
                 }
                 // apartmentService.saveApartmentRoomWithBatchData(apartmentRooms);
 

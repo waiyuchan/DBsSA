@@ -42,7 +42,8 @@ public enum ErrorCode {
     SERVICE_UNAVAILABLE(50006, ""),
     REQUEST_TIMEOUT(50007, ""),
 
-    FILE_IS_REQUIRED(60002, "未识别到文件，请检查是否上传成功");
+    FILE_IS_REQUIRED(60002, "未识别到文件，请检查是否上传成功"),
+    UNSUPPORTED_FILE_TYPE(60003, "不支持的文件类型");
 
 
     private long code;
