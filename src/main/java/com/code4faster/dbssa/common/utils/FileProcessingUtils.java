@@ -38,6 +38,13 @@ public class FileProcessingUtils {
         return fileName.substring(lastDotIndex + 1);
     }
 
+    /**
+     * 根据文件后缀名检查是否与目标文件类型匹配
+     *
+     * @param fileExtension 文件后缀名
+     * @param fileType 目标文件类型
+     * @return True or False
+     */
     public static boolean isFileTypeTrue(String fileExtension, FileType fileType) {
         return fileExtension.equals(fileType.getFileType());
     }

@@ -1,6 +1,7 @@
 package com.code4faster.dbssa.common.utils;
 
 import com.code4faster.dbssa.mbg.model.Apartment;
+import com.code4faster.dbssa.mbg.model.ApartmentRoom;
 import com.code4faster.dbssa.mbg.model.ApartmentRoomType;
 import com.code4faster.dbssa.mbg.model.EnterpriseStaff;
 import com.code4faster.dbssa.pojo.dto.EnterpriseStaffRegistration;
@@ -56,7 +57,7 @@ public class ModelClassUtils {
         // enterpriseStaff.setAddress("123123");
         // EnterpriseStaffRegistration enterpriseStaffRegistration = ModelClassUtils.copyValueOfSameProperties(enterpriseStaff, EnterpriseStaffRegistration.class);
         // System.out.println(enterpriseStaffRegistration.toString());
-        String s = ModelClassUtils.Bean2JsonString(new ApartmentRoomType());
+        String s = ModelClassUtils.Bean2JsonString(new ApartmentRoom());
         System.out.println(s);
     }
 }

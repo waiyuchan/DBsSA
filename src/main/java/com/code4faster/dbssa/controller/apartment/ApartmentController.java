@@ -148,7 +148,7 @@ public class ApartmentController {
                     System.out.println("The file is a json file.");
                     System.out.println(filename);
                 } else if (FileProcessingUtils.isFileTypeTrue(fileExtension, FileType.EXCEL_FILE)) {
-                    // TODO: 处理XML文件，批量创建房间
+                    // TODO: 处理excel文件，批量创建房间
                     System.out.println("The file is a excel file.");
                 } else if (FileProcessingUtils.isFileTypeTrue(fileExtension, FileType.CSV_FILE)) {
                     // TODO: 处理CSV文件，批量创建房间

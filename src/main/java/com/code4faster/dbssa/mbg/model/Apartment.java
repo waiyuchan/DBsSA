@@ -14,8 +14,6 @@ public class Apartment implements Serializable {
 
     private String officialMail;
 
-    private String description;
-
     private Integer floorNumber;
 
     private Integer numberOfRooms;
@@ -37,6 +35,8 @@ public class Apartment implements Serializable {
     private Integer status;
 
     private Date createTime;
+
+    private String description;
 
     private static final long serialVersionUID = 1L;
 
@@ -78,14 +78,6 @@ public class Apartment implements Serializable {
 
     public void setOfficialMail(String officialMail) {
         this.officialMail = officialMail == null ? null : officialMail.trim();
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
     }
 
     public Integer getFloorNumber() {
@@ -176,6 +168,14 @@ public class Apartment implements Serializable {
         this.createTime = createTime;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description == null ? null : description.trim();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -187,7 +187,6 @@ public class Apartment implements Serializable {
         sb.append(", address=").append(address);
         sb.append(", officialPhone=").append(officialPhone);
         sb.append(", officialMail=").append(officialMail);
-        sb.append(", description=").append(description);
         sb.append(", floorNumber=").append(floorNumber);
         sb.append(", numberOfRooms=").append(numberOfRooms);
         sb.append(", numberOfBedrooms=").append(numberOfBedrooms);
@@ -199,6 +198,7 @@ public class Apartment implements Serializable {
         sb.append(", startDate=").append(startDate);
         sb.append(", status=").append(status);
         sb.append(", createTime=").append(createTime);
+        sb.append(", description=").append(description);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
